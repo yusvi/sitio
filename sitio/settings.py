@@ -91,15 +91,13 @@ WSGI_APPLICATION = 'sitio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_home',
-        'USER': 'root',
+        'NAME': 'yusvi$db_home',
+        'USER': 'yusvi',
         'PASSWORD': 'grafiti12',
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'yusvi.mysql.pythonanywhere-services.com',
     }
 }
 
