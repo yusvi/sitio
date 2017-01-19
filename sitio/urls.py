@@ -19,12 +19,13 @@ from django.contrib import admin
 from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
-
+from home import urls
+from api import urls_2
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^',include('home.urls')),
-    url(r'^api/',include('api.urls')),
+    url(r'^',include('urls')),
+    url(r'^api/',include('urls_2')),
     #url(r'', include('smart_selects.urls')),
 
     url(r'^chaining/', include('smart_selects.urls')),
