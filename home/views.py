@@ -240,7 +240,7 @@ def verResumenGeneral(request, template_name='index.html'):
 
 
 
-def verResumenRelacion(request, template_name='Procesos/informes/index2.html'):
+def verResumenRelacion(request, template_name='Procesos/Informes/index2.html'):
 
 
         cursor3 = connection.cursor()
