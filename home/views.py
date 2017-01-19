@@ -30,7 +30,7 @@ class indexView(TemplateView):
 	template_name = 'index.html'
 
 
-
+ 
 
 
 
