@@ -71,3 +71,4 @@ def sort_results(results):
     """Performs in-place sort of filterchain results."""
 
     results.sort(key=lambda x: unicode_sorter(force_text(x)))
+ 
