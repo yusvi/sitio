@@ -7,7 +7,7 @@ from .models import *
 from .forms import *
 from django.forms import ModelForm
 from django.shortcuts import redirect
-from django.template import RequestContext
+#from django.template import RequestContext
 from django.db import connection
 from django.template import Context, loader
 from django.shortcuts import render_to_response
