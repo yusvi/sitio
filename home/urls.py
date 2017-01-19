@@ -25,8 +25,8 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
 #Procesos
     #url(r'^$',indexView.as_view(),name='index'),
-    url(r'^$', 'auth_views.login', {'template_name':'login.html'}, name='login'),
-    url(r'^cerrar/$', 'auth_views.logout_then_login', name='logout'),
+    url(r'^$', auth_views.login, {'template_name':'login.html'}, name='login'),
+    url(r'^cerrar/$', auth_views.logout_then_login, name='logout'),
 
     #url(r'^resumen_general$',login_required(indexView.as_view()),name='index'),
     url(r'^informes_procesos/$', login_required(verResumenGeneral), name='index'),
