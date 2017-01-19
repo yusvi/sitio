@@ -401,7 +401,7 @@ def verResumenRelacion(request, template_name='Procesos/Informes/index2.html'):
 
 
 
-def verResumenRelacion2(request, template_name='Procesos/informes/index22.html'):
+def verResumenRelacion2(request, template_name='Procesos/Informes/index22.html'):
 
 
         cursor3 = connection.cursor()
@@ -565,7 +565,7 @@ def verResumenRelacion2(request, template_name='Procesos/informes/index22.html')
 
 
 
-def verResumenResolucion(request, template_name='Procesos/informes/index3.html'):
+def verResumenResolucion(request, template_name='Procesos/Informes/index3.html'):
 
 
         cursor3 = connection.cursor()
@@ -728,7 +728,7 @@ def verResumenResolucion(request, template_name='Procesos/informes/index3.html')
 
 
 
-def verResumenResolucion2(request, template_name='Procesos/informes/index33.html'):
+def verResumenResolucion2(request, template_name='Procesos/Informes/index33.html'):
 
 
         cursor3 = connection.cursor()
@@ -892,7 +892,7 @@ def verResumenResolucion2(request, template_name='Procesos/informes/index33.html
 
 
 
-def verResumenControl(request, template_name='Procesos/informes/index4.html'):
+def verResumenControl(request, template_name='Procesos/Informes/index4.html'):
 
 
         cursor3 = connection.cursor()
@@ -1055,7 +1055,7 @@ def verResumenControl(request, template_name='Procesos/informes/index4.html'):
 
 
 
-def verResumenControl2(request, template_name='Procesos/informes/index44.html'):
+def verResumenControl2(request, template_name='Procesos/Informes/index44.html'):
 
 
         cursor3 = connection.cursor()
