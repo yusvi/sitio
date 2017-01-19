@@ -30,7 +30,7 @@ class ChainedForeignKeyTests(AssertReconstructibleMixin, unittest.TestCase):
         self.deconstruct_attrs = [
             'chained_field', 'chained_model_field', 'show_all', 'auto_choose',
             'view_name',
-        ]
+        ] 
 
     def test_deconstruct_basic(self):
         self.assert_reconstructible(
