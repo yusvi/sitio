@@ -244,7 +244,7 @@ def verResumenRelacion(request, template_name='Procesos/informes/index2.html'):
 
 
         cursor3 = connection.cursor()
-        cursor3.execute('select count(organizacion_id) as Total from db_home.home_encuestado where proceso_id=2;')
+        cursor3.execute('select count(organizacion_id) as Total from home_encuestado where proceso_id=2;')
                         
         persons3 = cursor3.fetchall() 
 
@@ -263,7 +263,7 @@ def verResumenRelacion(request, template_name='Procesos/informes/index2.html'):
 
 
         cursor5 = connection.cursor()
-        cursor5.execute('select count(id) as Total from db_home.home_evaluacion_proveedores;')
+        cursor5.execute('select count(id) as Total from home_evaluacion_proveedores;')
                         
         persons5 = cursor5.fetchall() 
 
@@ -279,7 +279,7 @@ def verResumenRelacion(request, template_name='Procesos/informes/index2.html'):
 
 
         cursor10 = connection.cursor()
-        cursor10.execute('SELECT year(fecha_encuesta) as ano FROM db_home.home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
+        cursor10.execute('SELECT year(fecha_encuesta) as ano FROM home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
                         
         persons10 = cursor10.fetchall() 
 
@@ -295,7 +295,7 @@ def verResumenRelacion(request, template_name='Procesos/informes/index2.html'):
 
 
         cursor11 = connection.cursor()
-        cursor11.execute('SELECT COUNT(id) as total FROM db_home.home_encuestado where proceso_id=2  group BY year(fecha_encuesta);')
+        cursor11.execute('SELECT COUNT(id) as total FROM home_encuestado where proceso_id=2  group BY year(fecha_encuesta);')
         
         persons11 = cursor11.fetchall() 
 
@@ -314,7 +314,7 @@ def verResumenRelacion(request, template_name='Procesos/informes/index2.html'):
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('SELECT year(fecha_encuesta) as ano, COUNT(id) as total, if(COUNT(id)>2,"Aprobado","No aprobado") as objetivo FROM db_home.home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
+        cursor12.execute('SELECT year(fecha_encuesta) as ano, COUNT(id) as total, if(COUNT(id)>2,"Aprobado","No aprobado") as objetivo FROM home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
         
         persons12 = cursor12.fetchall() 
 
@@ -331,7 +331,7 @@ def verResumenRelacion(request, template_name='Procesos/informes/index2.html'):
 
 
         cursor13 = connection.cursor()
-        cursor13.execute('SELECT year(fecha_registro) as ano, avg(calificacion) as promedio, if(avg(calificacion)>70,"Aprobado","No aprobado") as objetivo FROM db_home.home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
+        cursor13.execute('SELECT year(fecha_registro) as ano, avg(calificacion) as promedio, if(avg(calificacion)>70,"Aprobado","No aprobado") as objetivo FROM home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
         
         persons13 = cursor13.fetchall() 
 
@@ -349,7 +349,7 @@ def verResumenRelacion(request, template_name='Procesos/informes/index2.html'):
 
 
         cursor14 = connection.cursor()
-        cursor14.execute('SELECT year(fecha_registro) as ano FROM db_home.home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
+        cursor14.execute('SELECT year(fecha_registro) as ano FROM home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
                         
         persons14 = cursor14.fetchall() 
 
@@ -365,7 +365,7 @@ def verResumenRelacion(request, template_name='Procesos/informes/index2.html'):
 
 
         cursor15 = connection.cursor()
-        cursor15.execute('SELECT avg(calificacion) as promedio FROM db_home.home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
+        cursor15.execute('SELECT avg(calificacion) as promedio FROM home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
         
         persons15 = cursor15.fetchall() 
 
@@ -405,7 +405,7 @@ def verResumenRelacion2(request, template_name='Procesos/informes/index22.html')
 
 
         cursor3 = connection.cursor()
-        cursor3.execute('select count(organizacion_id) as Total from db_home.home_encuestado where proceso_id=2;')
+        cursor3.execute('select count(organizacion_id) as Total from home_encuestado where proceso_id=2;')
                         
         persons3 = cursor3.fetchall() 
 
@@ -424,7 +424,7 @@ def verResumenRelacion2(request, template_name='Procesos/informes/index22.html')
 
 
         cursor5 = connection.cursor()
-        cursor5.execute('select count(id) as Total from db_home.home_evaluacion_proveedores;')
+        cursor5.execute('select count(id) as Total from home_evaluacion_proveedores;')
                         
         persons5 = cursor5.fetchall() 
 
@@ -440,7 +440,7 @@ def verResumenRelacion2(request, template_name='Procesos/informes/index22.html')
 
 
         cursor10 = connection.cursor()
-        cursor10.execute('SELECT year(fecha_encuesta) as ano FROM db_home.home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
+        cursor10.execute('SELECT year(fecha_encuesta) as ano FROM home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
                         
         persons10 = cursor10.fetchall() 
 
@@ -456,7 +456,7 @@ def verResumenRelacion2(request, template_name='Procesos/informes/index22.html')
 
 
         cursor11 = connection.cursor()
-        cursor11.execute('SELECT COUNT(id) as total FROM db_home.home_encuestado where proceso_id=2  group BY year(fecha_encuesta);')
+        cursor11.execute('SELECT COUNT(id) as total FROM home_encuestado where proceso_id=2  group BY year(fecha_encuesta);')
         
         persons11 = cursor11.fetchall() 
 
@@ -475,7 +475,7 @@ def verResumenRelacion2(request, template_name='Procesos/informes/index22.html')
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('SELECT year(fecha_encuesta) as ano, COUNT(id) as total, if(COUNT(id)>2,"Aprobado","No aprobado") as objetivo FROM db_home.home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
+        cursor12.execute('SELECT year(fecha_encuesta) as ano, COUNT(id) as total, if(COUNT(id)>2,"Aprobado","No aprobado") as objetivo FROM home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
         
         persons12 = cursor12.fetchall() 
 
@@ -492,7 +492,7 @@ def verResumenRelacion2(request, template_name='Procesos/informes/index22.html')
 
 
         cursor13 = connection.cursor()
-        cursor13.execute('SELECT year(fecha_registro) as ano, avg(calificacion) as promedio, if(avg(calificacion)>70,"Aprobado","No aprobado") as objetivo FROM db_home.home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
+        cursor13.execute('SELECT year(fecha_registro) as ano, avg(calificacion) as promedio, if(avg(calificacion)>70,"Aprobado","No aprobado") as objetivo FROM home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
         
         persons13 = cursor13.fetchall() 
 
@@ -510,7 +510,7 @@ def verResumenRelacion2(request, template_name='Procesos/informes/index22.html')
 
 
         cursor14 = connection.cursor()
-        cursor14.execute('SELECT year(fecha_registro) as ano FROM db_home.home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
+        cursor14.execute('SELECT year(fecha_registro) as ano FROM home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
                         
         persons14 = cursor14.fetchall() 
 
@@ -526,7 +526,7 @@ def verResumenRelacion2(request, template_name='Procesos/informes/index22.html')
 
 
         cursor15 = connection.cursor()
-        cursor15.execute('SELECT avg(calificacion) as promedio FROM db_home.home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
+        cursor15.execute('SELECT avg(calificacion) as promedio FROM home_evaluacion_proveedores where proceso_id=5 group by year(fecha_registro);')
         
         persons15 = cursor15.fetchall() 
 
@@ -569,7 +569,7 @@ def verResumenResolucion(request, template_name='Procesos/informes/index3.html')
 
 
         cursor3 = connection.cursor()
-        cursor3.execute('select count(id) as Total from db_home.home_peticion;')
+        cursor3.execute('select count(id) as Total from home_peticion;')
                         
         persons3 = cursor3.fetchall() 
 
@@ -588,7 +588,7 @@ def verResumenResolucion(request, template_name='Procesos/informes/index3.html')
 
 
         cursor5 = connection.cursor()
-        cursor5.execute('select count(id) as Total from db_home.home_problema;')
+        cursor5.execute('select count(id) as Total from home_problema;')
                         
         persons5 = cursor5.fetchall() 
 
@@ -604,7 +604,7 @@ def verResumenResolucion(request, template_name='Procesos/informes/index3.html')
 
 
         cursor10 = connection.cursor()
-        cursor10.execute('select monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano from db_home.home_acuerdo_sla l, db_home.home_cierre_peticion c, db_home.home_peticion a where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre)')
+        cursor10.execute('select monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre)')
 
                          
         persons10 = cursor10.fetchall() 
@@ -621,7 +621,7 @@ def verResumenResolucion(request, template_name='Procesos/informes/index3.html')
 
 
         cursor11 = connection.cursor()
-        cursor11.execute('select count(c.fecha_cierre) as total from db_home.home_acuerdo_sla l, db_home.home_cierre_peticion c, db_home.home_peticion a where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre)')
+        cursor11.execute('select count(c.fecha_cierre) as total from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre)')
         
         persons11 = cursor11.fetchall() 
 
@@ -638,7 +638,7 @@ def verResumenResolucion(request, template_name='Procesos/informes/index3.html')
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('SELECT monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano, if(DATEDIFF(l.fecha_solucion, c.fecha_cierre)>0, "Cumplido", "No cumplido") as objetivo, count(DATEDIFF(l.fecha_solucion, c.fecha_cierre)) as total from db_home.home_acuerdo_sla l, db_home.home_cierre_peticion c, db_home.home_peticion a  where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre), objetivo')
+        cursor12.execute('SELECT monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano, if(DATEDIFF(l.fecha_solucion, c.fecha_cierre)>0, "Cumplido", "No cumplido") as objetivo, count(DATEDIFF(l.fecha_solucion, c.fecha_cierre)) as total from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a  where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre), objetivo')
         
         persons12 = cursor12.fetchall() 
 
@@ -655,7 +655,7 @@ def verResumenResolucion(request, template_name='Procesos/informes/index3.html')
 
 
         cursor13 = connection.cursor()
-        cursor13.execute('select monthname(a.fecha_inicio) as mes, year(a.fecha_inicio) as ano from db_home.home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio);')
+        cursor13.execute('select monthname(a.fecha_inicio) as mes, year(a.fecha_inicio) as ano from home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio);')
         
         persons13 = cursor13.fetchall() 
 
@@ -673,7 +673,7 @@ def verResumenResolucion(request, template_name='Procesos/informes/index3.html')
 
 
         cursor14 = connection.cursor()
-        cursor14.execute('select count(a.fecha_inicio) as inicio from db_home.home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio);')
+        cursor14.execute('select count(a.fecha_inicio) as inicio from home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio);')
                          
         persons14 = cursor14.fetchall() 
 
@@ -689,7 +689,7 @@ def verResumenResolucion(request, template_name='Procesos/informes/index3.html')
 
 
         cursor15 = connection.cursor()
-        cursor15.execute('select * from (select monthname(a.fecha_inicio) as mes, year(a.fecha_inicio) as ano, count(a.fecha_inicio) as inicio from db_home.home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio)) as A LEFT OUTER JOIN (select monthname(a.fecha_inicio) as mes2, year(a.fecha_inicio) as ano2, count(a.fecha_inicio) as cierre from db_home.home_asignacion_problema a, db_home.home_cierre_problema c where a.problema_id=c.problema_id group by year(a.fecha_inicio), month(a.fecha_inicio)) as B on A.mes=B.mes2;')
+        cursor15.execute('select * from (select monthname(a.fecha_inicio) as mes, year(a.fecha_inicio) as ano, count(a.fecha_inicio) as inicio from home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio)) as A LEFT OUTER JOIN (select monthname(a.fecha_inicio) as mes2, year(a.fecha_inicio) as ano2, count(a.fecha_inicio) as cierre from home_asignacion_problema a, home_cierre_problema c where a.problema_id=c.problema_id group by year(a.fecha_inicio), month(a.fecha_inicio)) as B on A.mes=B.mes2;')
 
         persons15 = cursor15.fetchall() 
 
@@ -732,7 +732,7 @@ def verResumenResolucion2(request, template_name='Procesos/informes/index33.html
 
 
         cursor3 = connection.cursor()
-        cursor3.execute('select count(id) as Total from db_home.home_peticion;')
+        cursor3.execute('select count(id) as Total from home_peticion;')
                         
         persons3 = cursor3.fetchall() 
 
@@ -751,7 +751,7 @@ def verResumenResolucion2(request, template_name='Procesos/informes/index33.html
 
 
         cursor5 = connection.cursor()
-        cursor5.execute('select count(id) as Total from db_home.home_problema;')
+        cursor5.execute('select count(id) as Total from home_problema;')
                         
         persons5 = cursor5.fetchall() 
 
@@ -767,7 +767,7 @@ def verResumenResolucion2(request, template_name='Procesos/informes/index33.html
 
 
         cursor10 = connection.cursor()
-        cursor10.execute('select monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano from db_home.home_acuerdo_sla l, db_home.home_cierre_peticion c, db_home.home_peticion a where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre)')
+        cursor10.execute('select monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre)')
 
                          
         persons10 = cursor10.fetchall() 
@@ -784,7 +784,7 @@ def verResumenResolucion2(request, template_name='Procesos/informes/index33.html
 
 
         cursor11 = connection.cursor()
-        cursor11.execute('select count(c.fecha_cierre) as total from db_home.home_acuerdo_sla l, db_home.home_cierre_peticion c, db_home.home_peticion a where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre)')
+        cursor11.execute('select count(c.fecha_cierre) as total from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre)')
         
         persons11 = cursor11.fetchall() 
 
@@ -801,7 +801,7 @@ def verResumenResolucion2(request, template_name='Procesos/informes/index33.html
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('SELECT monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano, if(DATEDIFF(l.fecha_solucion, c.fecha_cierre)>0, "Cumplido", "No cumplido") as objetivo, count(DATEDIFF(l.fecha_solucion, c.fecha_cierre)) as total from db_home.home_acuerdo_sla l, db_home.home_cierre_peticion c, db_home.home_peticion a  where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre), objetivo')
+        cursor12.execute('SELECT monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano, if(DATEDIFF(l.fecha_solucion, c.fecha_cierre)>0, "Cumplido", "No cumplido") as objetivo, count(DATEDIFF(l.fecha_solucion, c.fecha_cierre)) as total from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a  where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre), objetivo')
         
         persons12 = cursor12.fetchall() 
 
@@ -818,7 +818,7 @@ def verResumenResolucion2(request, template_name='Procesos/informes/index33.html
 
 
         cursor13 = connection.cursor()
-        cursor13.execute('select monthname(a.fecha_inicio) as mes, year(a.fecha_inicio) as ano from db_home.home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio);')
+        cursor13.execute('select monthname(a.fecha_inicio) as mes, year(a.fecha_inicio) as ano from home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio);')
         
         persons13 = cursor13.fetchall() 
 
@@ -836,7 +836,7 @@ def verResumenResolucion2(request, template_name='Procesos/informes/index33.html
 
 
         cursor14 = connection.cursor()
-        cursor14.execute('select count(a.fecha_inicio) as inicio from db_home.home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio);')
+        cursor14.execute('select count(a.fecha_inicio) as inicio from home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio);')
                          
         persons14 = cursor14.fetchall() 
 
@@ -852,7 +852,7 @@ def verResumenResolucion2(request, template_name='Procesos/informes/index33.html
 
 
         cursor15 = connection.cursor()
-        cursor15.execute('select * from (select monthname(a.fecha_inicio) as mes, year(a.fecha_inicio) as ano, count(a.fecha_inicio) as inicio from db_home.home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio)) as A LEFT OUTER JOIN (select monthname(a.fecha_inicio) as mes2, year(a.fecha_inicio) as ano2, count(a.fecha_inicio) as cierre from db_home.home_asignacion_problema a, db_home.home_cierre_problema c where a.problema_id=c.problema_id group by year(a.fecha_inicio), month(a.fecha_inicio)) as B on A.mes=B.mes2;')
+        cursor15.execute('select * from (select monthname(a.fecha_inicio) as mes, year(a.fecha_inicio) as ano, count(a.fecha_inicio) as inicio from home_asignacion_problema a group by year(a.fecha_inicio), month(a.fecha_inicio)) as A LEFT OUTER JOIN (select monthname(a.fecha_inicio) as mes2, year(a.fecha_inicio) as ano2, count(a.fecha_inicio) as cierre from home_asignacion_problema a, home_cierre_problema c where a.problema_id=c.problema_id group by year(a.fecha_inicio), month(a.fecha_inicio)) as B on A.mes=B.mes2;')
 
         persons15 = cursor15.fetchall() 
 
@@ -896,7 +896,7 @@ def verResumenControl(request, template_name='Procesos/informes/index4.html'):
 
 
         cursor3 = connection.cursor()
-        cursor3.execute('select count(id) as Total from db_home.home_general_configuracion;')
+        cursor3.execute('select count(id) as Total from home_general_configuracion;')
                         
         persons3 = cursor3.fetchall() 
 
@@ -915,7 +915,7 @@ def verResumenControl(request, template_name='Procesos/informes/index4.html'):
 
 
         cursor5 = connection.cursor()
-        cursor5.execute('select monthname(a.fecha_registro) as mes, year(a.fecha_registro) as ano, count(a.fecha_registro) as registro from db_home.home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
+        cursor5.execute('select monthname(a.fecha_registro) as mes, year(a.fecha_registro) as ano, count(a.fecha_registro) as registro from home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
                         
         persons5 = cursor5.fetchall() 
 
@@ -931,7 +931,7 @@ def verResumenControl(request, template_name='Procesos/informes/index4.html'):
 
 
         cursor10 = connection.cursor()
-        cursor10.execute('select monthname(a.fecha_registro) as mes, year(a.fecha_registro) as ano from db_home.home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
+        cursor10.execute('select monthname(a.fecha_registro) as mes, year(a.fecha_registro) as ano from home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
                          
         persons10 = cursor10.fetchall() 
 
@@ -947,7 +947,7 @@ def verResumenControl(request, template_name='Procesos/informes/index4.html'):
 
 
         cursor11 = connection.cursor()
-        cursor11.execute('select count(a.fecha_registro) as registro from db_home.home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
+        cursor11.execute('select count(a.fecha_registro) as registro from home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
         
         persons11 = cursor11.fetchall() 
 
@@ -964,7 +964,7 @@ def verResumenControl(request, template_name='Procesos/informes/index4.html'):
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('select count(id) as Total from db_home.home_solicitud_cambio;')
+        cursor12.execute('select count(id) as Total from home_solicitud_cambio;')
         
         persons12 = cursor12.fetchall() 
 
@@ -981,7 +981,7 @@ def verResumenControl(request, template_name='Procesos/informes/index4.html'):
 
 
         cursor13 = connection.cursor()
-        cursor13.execute('SELECT year(fecha) as ano, monthname(fecha) as mes, COUNT(id) as total, if(COUNT(id)>=5,"Cumplido","No cumplido") as objetivo FROM db_home.home_solicitud_cambio group by year(fecha), month(fecha);')
+        cursor13.execute('SELECT year(fecha) as ano, monthname(fecha) as mes, COUNT(id) as total, if(COUNT(id)>=5,"Cumplido","No cumplido") as objetivo FROM home_solicitud_cambio group by year(fecha), month(fecha);')
         
         persons13 = cursor13.fetchall() 
 
@@ -999,7 +999,7 @@ def verResumenControl(request, template_name='Procesos/informes/index4.html'):
 
 
         cursor14 = connection.cursor()
-        cursor14.execute('SELECT year(fecha) as ano, monthname(fecha) as mes FROM db_home.home_solicitud_cambio group by year(fecha), month(fecha);')
+        cursor14.execute('SELECT year(fecha) as ano, monthname(fecha) as mes FROM home_solicitud_cambio group by year(fecha), month(fecha);')
                          
         persons14 = cursor14.fetchall() 
 
@@ -1015,7 +1015,7 @@ def verResumenControl(request, template_name='Procesos/informes/index4.html'):
 
 
         cursor15 = connection.cursor()
-        cursor15.execute('SELECT COUNT(id) as total FROM db_home.home_solicitud_cambio group by year(fecha), month(fecha);')
+        cursor15.execute('SELECT COUNT(id) as total FROM home_solicitud_cambio group by year(fecha), month(fecha);')
 
         persons15 = cursor15.fetchall() 
 
@@ -1059,7 +1059,7 @@ def verResumenControl2(request, template_name='Procesos/informes/index44.html'):
 
 
         cursor3 = connection.cursor()
-        cursor3.execute('select count(id) as Total from db_home.home_general_configuracion;')
+        cursor3.execute('select count(id) as Total from home_general_configuracion;')
                         
         persons3 = cursor3.fetchall() 
 
@@ -1078,7 +1078,7 @@ def verResumenControl2(request, template_name='Procesos/informes/index44.html'):
 
 
         cursor5 = connection.cursor()
-        cursor5.execute('select monthname(a.fecha_registro) as mes, year(a.fecha_registro) as ano, count(a.fecha_registro) as registro from db_home.home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
+        cursor5.execute('select monthname(a.fecha_registro) as mes, year(a.fecha_registro) as ano, count(a.fecha_registro) as registro from home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
                         
         persons5 = cursor5.fetchall() 
 
@@ -1094,7 +1094,7 @@ def verResumenControl2(request, template_name='Procesos/informes/index44.html'):
 
 
         cursor10 = connection.cursor()
-        cursor10.execute('select monthname(a.fecha_registro) as mes, year(a.fecha_registro) as ano from db_home.home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
+        cursor10.execute('select monthname(a.fecha_registro) as mes, year(a.fecha_registro) as ano from home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
                          
         persons10 = cursor10.fetchall() 
 
@@ -1110,7 +1110,7 @@ def verResumenControl2(request, template_name='Procesos/informes/index44.html'):
 
 
         cursor11 = connection.cursor()
-        cursor11.execute('select count(a.fecha_registro) as registro from db_home.home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
+        cursor11.execute('select count(a.fecha_registro) as registro from home_general_configuracion a group by year(a.fecha_registro), month(a.fecha_registro);')
         
         persons11 = cursor11.fetchall() 
 
@@ -1127,7 +1127,7 @@ def verResumenControl2(request, template_name='Procesos/informes/index44.html'):
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('select count(id) as Total from db_home.home_solicitud_cambio;')
+        cursor12.execute('select count(id) as Total from home_solicitud_cambio;')
         
         persons12 = cursor12.fetchall() 
 
@@ -1144,7 +1144,7 @@ def verResumenControl2(request, template_name='Procesos/informes/index44.html'):
 
 
         cursor13 = connection.cursor()
-        cursor13.execute('SELECT year(fecha) as ano, monthname(fecha) as mes, COUNT(id) as total, if(COUNT(id)>=5,"Cumplido","No cumplido") as objetivo FROM db_home.home_solicitud_cambio group by year(fecha), month(fecha);')
+        cursor13.execute('SELECT year(fecha) as ano, monthname(fecha) as mes, COUNT(id) as total, if(COUNT(id)>=5,"Cumplido","No cumplido") as objetivo FROM home_solicitud_cambio group by year(fecha), month(fecha);')
         
         persons13 = cursor13.fetchall() 
 
@@ -1162,7 +1162,7 @@ def verResumenControl2(request, template_name='Procesos/informes/index44.html'):
 
 
         cursor14 = connection.cursor()
-        cursor14.execute('SELECT year(fecha) as ano, monthname(fecha) as mes FROM db_home.home_solicitud_cambio group by year(fecha), month(fecha);')
+        cursor14.execute('SELECT year(fecha) as ano, monthname(fecha) as mes FROM home_solicitud_cambio group by year(fecha), month(fecha);')
                          
         persons14 = cursor14.fetchall() 
 
@@ -1178,7 +1178,7 @@ def verResumenControl2(request, template_name='Procesos/informes/index44.html'):
 
 
         cursor15 = connection.cursor()
-        cursor15.execute('SELECT COUNT(id) as total FROM db_home.home_solicitud_cambio group by year(fecha), month(fecha);')
+        cursor15.execute('SELECT COUNT(id) as total FROM home_solicitud_cambio group by year(fecha), month(fecha);')
 
         persons15 = cursor15.fetchall() 
 
@@ -1587,7 +1587,7 @@ def newImpresora(request, template_name='Procesos/Configuracion/nuevaImpresora.h
 def verImpresora(request, template_name='Procesos/Configuracion/mostrarImpresora.html'):
 
         cursor = connection.cursor()
-        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from db_home.home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from db_home.home_impresora i where i.general_id=g.id) as impresora, (select i.nombre_impresora from db_home.home_impresora i where i.general_id=g.id) as nombre_impresora, (select i.numero_serie from db_home.home_impresora i where i.general_id=g.id) as numero_serie, (SELECT m.nombre_marca from db_home.home_marca m, db_home.home_impresora i  where m.id = i.marca_id and i.general_id=g.id) as marca, (SELECT d.nombre_modelo from db_home.home_modelo d, db_home.home_impresora i  where d.id = i.modelo_id and i.general_id=g.id) as modelo from db_home.home_general_configuracion g where g.nombre_ec_id=9;')
+        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from home_impresora i where i.general_id=g.id) as impresora, (select i.nombre_impresora from home_impresora i where i.general_id=g.id) as nombre_impresora, (select i.numero_serie from home_impresora i where i.general_id=g.id) as numero_serie, (SELECT m.nombre_marca from db_home.home_marca m, db_home.home_impresora i  where m.id = i.marca_id and i.general_id=g.id) as marca, (SELECT d.nombre_modelo from db_home.home_modelo d, db_home.home_impresora i  where d.id = i.modelo_id and i.general_id=g.id) as modelo from db_home.home_general_configuracion g where g.nombre_ec_id=9;')
 
         persons = cursor.fetchall() 
 
@@ -1651,7 +1651,7 @@ def newGranja(request, template_name='Procesos/Configuracion/nuevaGranja.html'):
 def verGranja(request, template_name='Procesos/Configuracion/mostrarGranja.html'):
 
         cursor = connection.cursor()
-        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from db_home.home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from db_home.home_granja i where i.general_id=g.id) as granja, (select i.nombre_granja from db_home.home_granja i where i.general_id=g.id) as nombre_granja from db_home.home_general_configuracion g where g.nombre_ec_id=4;')
+        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from home_granja i where i.general_id=g.id) as granja, (select i.nombre_granja from home_granja i where i.general_id=g.id) as nombre_granja from home_general_configuracion g where g.nombre_ec_id=4;')
                        
         persons = cursor.fetchall() 
 
@@ -1711,7 +1711,7 @@ def newLicencia(request, template_name='Procesos/Configuracion/nuevaLicencia.htm
 
 def verLicencia(request, template_name='Procesos/Configuracion/mostrarLicencia.html'):
         cursor = connection.cursor()
-        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from db_home.home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from db_home.home_licencia i where i.general_id=g.id) as licencia, (select i.nombre_licencia from db_home.home_licencia i where i.general_id=g.id) as nombre, (select i.cantidad from db_home.home_licencia i where i.general_id=g.id) as cantidad, (SELECT p.nombre_ec from db_home.home_ec p, db_home.home_licencia i  where p.id = i.tipo_id and i.general_id=g.id) as tipo, (select i.llave from db_home.home_licencia i where i.general_id=g.id) as llave, (select i.fecha_inicio from db_home.home_licencia i where i.general_id=g.id) as inicio, (select i.fecha_fin from db_home.home_licencia i where i.general_id=g.id) as fin, (SELECT p.nombre_software from db_home.home_so_programa p, db_home.home_licencia i  where p.id = i.software_id and i.general_id=g.id) as software, (SELECT p.nombre_version from db_home.home_version p, db_home.home_licencia i where p.id = i.version_id and i.general_id=g.id) as version from db_home.home_general_configuracion g where g.nombre_ec_id=11;')
+        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from home_licencia i where i.general_id=g.id) as licencia, (select i.nombre_licencia from home_licencia i where i.general_id=g.id) as nombre, (select i.cantidad from home_licencia i where i.general_id=g.id) as cantidad, (SELECT p.nombre_ec from home_ec p, home_licencia i  where p.id = i.tipo_id and i.general_id=g.id) as tipo, (select i.llave from home_licencia i where i.general_id=g.id) as llave, (select i.fecha_inicio from home_licencia i where i.general_id=g.id) as inicio, (select i.fecha_fin from home_licencia i where i.general_id=g.id) as fin, (SELECT p.nombre_software from home_so_programa p, home_licencia i  where p.id = i.software_id and i.general_id=g.id) as software, (SELECT p.nombre_version from home_version p, home_licencia i where p.id = i.version_id and i.general_id=g.id) as version from home_general_configuracion g where g.nombre_ec_id=11;')
                        
         persons = cursor.fetchall() 
 
@@ -1766,7 +1766,7 @@ def newMaquina(request, template_name='Procesos/Configuracion/nuevaMaquina.html'
 def verMaquina(request, template_name='Procesos/Configuracion/mostrarMaquina.html'):
 
         cursor = connection.cursor()
-        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from db_home.home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from db_home.home_maquina_virtual i where i.general_id=g.id) as maquina, (select i.nombre_maquina from db_home.home_maquina_virtual i where i.general_id=g.id) as nombre_maquina, (select i.ip from db_home.home_maquina_virtual i where i.general_id=g.id) as ip, (select i.cpu from db_home.home_maquina_virtual i where i.general_id=g.id) as cpu, (select i.ram from db_home.home_maquina_virtual i where i.general_id=g.id) as ram, (SELECT p.nombre_granja from db_home.home_granja p, db_home.home_maquina_virtual i  where p.id = i.granja_id and i.general_id=g.id) as granja, (SELECT p.nombre_licencia from db_home.home_licencia p, db_home.home_maquina_virtual i  where p.id = i.licencia_id and i.general_id=g.id) as licencia, (SELECT p.nombre_software from db_home.home_so_programa p, db_home.home_maquina_virtual i  where p.id = i.software_id and i.general_id=g.id) as software from db_home.home_general_configuracion g where g.nombre_ec_id=6')
+        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from home_maquina_virtual i where i.general_id=g.id) as maquina, (select i.nombre_maquina from home_maquina_virtual i where i.general_id=g.id) as nombre_maquina, (select i.ip from home_maquina_virtual i where i.general_id=g.id) as ip, (select i.cpu from home_maquina_virtual i where i.general_id=g.id) as cpu, (select i.ram from home_maquina_virtual i where i.general_id=g.id) as ram, (SELECT p.nombre_granja from home_granja p, home_maquina_virtual i  where p.id = i.granja_id and i.general_id=g.id) as granja, (SELECT p.nombre_licencia from home_licencia p, home_maquina_virtual i  where p.id = i.licencia_id and i.general_id=g.id) as licencia, (SELECT p.nombre_software from home_so_programa p, home_maquina_virtual i  where p.id = i.software_id and i.general_id=g.id) as software from home_general_configuracion g where g.nombre_ec_id=6')
                        
         persons = cursor.fetchall() 
 
@@ -1824,7 +1824,7 @@ def newVlan(request, template_name='Procesos/Configuracion/nuevaVlan.html'):
 
 def verVlan(request, template_name='Procesos/Configuracion/mostrarVlan.html'):
         cursor = connection.cursor()
-        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from db_home.home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from db_home.home_vlan i where i.general_id=g.id) as vlan, (select i.nombre_vlan from db_home.home_vlan i where i.general_id=g.id) as nombre,  (select i.descripcion from db_home.home_vlan i where i.general_id=g.id) as descripcion  from db_home.home_general_configuracion g where g.nombre_ec_id=13;')
+        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from home_vlan i where i.general_id=g.id) as vlan, (select i.nombre_vlan from home_vlan i where i.general_id=g.id) as nombre,  (select i.descripcion from home_vlan i where i.general_id=g.id) as descripcion  from home_general_configuracion g where g.nombre_ec_id=13;')
                        
         persons = cursor.fetchall() 
 
@@ -1871,7 +1871,7 @@ def eliminarVlan(request, id, template_name='Procesos/Configuracion/eliminarVlan
 
 def verContacto(request, template_name='Procesos/Configuracion/mostrarContacto.html'):
         cursor = connection.cursor()
-        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from db_home.home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from db_home.home_cliente_empleado i where i.general_id=g.id) as contacto, (select i.nombre_contacto from db_home.home_cliente_empleado i where i.general_id=g.id) as nombre, (select i.apellido_contacto from db_home.home_cliente_empleado i where i.general_id=g.id) as apellido, (SELECT p.contacto from db_home.home_tipo_contacto p, db_home.home_cliente_empleado i where p.id = i.tipo_contacto_id and i.general_id=g.id) as tipo, (SELECT p.nombre_organizacion from db_home.home_organizacion p, db_home.home_cliente_empleado i where p.id = i.organizacion_id and i.general_id=g.id) as organizacion, (SELECT p.nombre_grupo from db_home.home_grupo_ec p, db_home.home_cliente_empleado i where p.id = i.grupo_id and i.general_id=g.id) as area,  (select i.correo from db_home.home_cliente_empleado i where i.general_id=g.id) as correo from db_home.home_general_configuracion g where g.nombre_ec_id=14')
+        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from home_cliente_empleado i where i.general_id=g.id) as contacto, (select i.nombre_contacto from home_cliente_empleado i where i.general_id=g.id) as nombre, (select i.apellido_contacto from home_cliente_empleado i where i.general_id=g.id) as apellido, (SELECT p.contacto from home_tipo_contacto p, home_cliente_empleado i where p.id = i.tipo_contacto_id and i.general_id=g.id) as tipo, (SELECT p.nombre_organizacion from home_organizacion p, home_cliente_empleado i where p.id = i.organizacion_id and i.general_id=g.id) as organizacion, (SELECT p.nombre_grupo from home_grupo_ec p, home_cliente_empleado i where p.id = i.grupo_id and i.general_id=g.id) as area,  (select i.correo from home_cliente_empleado i where i.general_id=g.id) as correo from home_general_configuracion g where g.nombre_ec_id=14')
 
 
                        
@@ -1931,7 +1931,7 @@ def newPC(request, template_name='Procesos/Configuracion/nuevaPC.html'):
 
 def verPC(request, template_name='Procesos/Configuracion/mostrarPC.html'):
         cursor = connection.cursor()
-        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from db_home.home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from db_home.home_pc_laptop i where i.general_id=g.id) as pc, (select i.nombre_equipo from db_home.home_pc_laptop i where i.general_id=g.id) as nombre, (SELECT i.nombre_organizacion from db_home.home_organizacion i, db_home.home_pc_laptop p where i.id =p.organizacion_id and p.general_id=g.id) as organizacion, (SELECT i.nombre_contacto from db_home.home_cliente_empleado i, db_home.home_pc_laptop p where i.id = p.contacto_id and p.general_id=g.id) as nombre_contacto, (SELECT i.apellido_contacto from db_home.home_cliente_empleado i, db_home.home_pc_laptop p where i.id = p.contacto_id and p.general_id=g.id) as apellido_contacto, (SELECT i.nombre_marca from db_home.home_marca i, db_home.home_pc_laptop p where i.id = p.marca_id and p.general_id=g.id) as marca, (SELECT i.nombre_modelo from db_home.home_modelo i, db_home.home_pc_laptop p where i.id = p.modelo_id and p.general_id=g.id) as modelo, (select i.cpu from db_home.home_pc_laptop i where i.general_id=g.id) as cpu, (select i.ram from db_home.home_pc_laptop i where i.general_id=g.id) as ram, (select i.numero_serie from db_home.home_pc_laptop i where i.general_id=g.id) as serie from db_home.home_general_configuracion g where g.nombre_ec_id=7;')
+        cursor.execute('select g.id as ec, g.criticidad, (SELECT p.nombre_grupo from home_grupo_ec p where p.id = g.nombre_grupo_id) as grupo, g.fecha_registro, (select i.id from home_pc_laptop i where i.general_id=g.id) as pc, (select i.nombre_equipo from home_pc_laptop i where i.general_id=g.id) as nombre, (SELECT i.nombre_organizacion from home_organizacion i, home_pc_laptop p where i.id =p.organizacion_id and p.general_id=g.id) as organizacion, (SELECT i.nombre_contacto from home_cliente_empleado i, home_pc_laptop p where i.id = p.contacto_id and p.general_id=g.id) as nombre_contacto, (SELECT i.apellido_contacto from home_cliente_empleado i, home_pc_laptop p where i.id = p.contacto_id and p.general_id=g.id) as apellido_contacto, (SELECT i.nombre_marca from home_marca i, home_pc_laptop p where i.id = p.marca_id and p.general_id=g.id) as marca, (SELECT i.nombre_modelo from home_modelo i, home_pc_laptop p where i.id = p.modelo_id and p.general_id=g.id) as modelo, (select i.cpu from home_pc_laptop i where i.general_id=g.id) as cpu, (select i.ram from home_pc_laptop i where i.general_id=g.id) as ram, (select i.numero_serie from home_pc_laptop i where i.general_id=g.id) as serie from home_general_configuracion g where g.nombre_ec_id=7;')
                        
 
                        
