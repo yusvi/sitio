@@ -12,7 +12,8 @@ from django.db import connection
 from django.template import Context, loader
 from django.shortcuts import render_to_response
 from django.db.models import Count
-from django.shortcuts import HttpResponse, render_to_response, RequestContext, HttpResponseRedirect
+from django.shortcuts import HttpResponse, render_to_response, HttpResponseRedirect
+#from django.shortcuts import HttpResponse, render_to_response, RequestContext, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from extra_views import FormSetView, ModelFormSetView, InlineFormSetView, InlineFormSet, CreateWithInlinesView, UpdateWithInlinesView, CalendarMonthView, NamedFormsetsMixin, SortableListMixin, SearchableListMixin
 from extra_views import NamedFormsetsMixin
