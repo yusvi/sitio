@@ -1,0 +1,165 @@
+
+{% load widget_tweaks %}
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="http://yourjavascript.com/7174319415/script.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
+
+
+<form id="add_item" class="form" role="form" action="{% url 'add_peticion' %}" method="post">
+		
+            <div class="modal-header">
+                <button type="button" class="close" 
+                  data-dismiss="modal" aria-hidden="true">
+                  <span class="glyphicon glyphicon-remove-circle"></span>
+                </button>
+				<h4 class="modal-title">Agregar Peticion</h4>
+            </div>
+            <div class="modal-body">
+                    {% csrf_token %}
+						{{ form.peticion.label_tag }} {{ form.peticion|attr:"add_class=form-control required" }}
+						
+						</p>
+						<p>{{ form.tipo_contacto.label_tag }} 
+						<select name="tipo_contacto" id="tipo_contacto" onchange="getOrganizacion()">
+							  <option id="-1">Select Tipo Contacto</option>
+							</select>
+						</p>
+						<p>{{ form.organizacion.label_tag }} 
+						<select name="organizacion" id="organizacion" onchange="getContacto()">
+							  <option id="-1">Select Organizacion</option>
+							</select>
+						</p>
+						<p>{{ form.contacto.label_tag }} 
+						<select name="contacto" id="contacto" >
+							  <option id="-1">Select Contacto</option>
+							</select>
+						</p>
+						<p>{{ form.origen.label_tag }}{{ form.origen|attr:"add_class=form-control required" }}</p>
+						<p>{{ form.asunto.label_tag }}{{ form.asunto|attr:"add_class=form-control required" }}</p>
+						<p>{{ form.descripcion.label_tag }}{{ form.descripcion|attr:"add_class=form-control required" }}</p>
+						<p>{{ form.impacto.label_tag }}{{ form.impacto|attr:"add_class=form-control required" }}</p>
+						<p>{{ form.urgencia.label_tag }}{{ form.urgencia|attr:"add_class=form-control required" }}</p>
+            </div>
+		
+		
+        <div class="modal-footer">  
+
+			<button type="submit" class="btn btn-success" name="add_button">Save</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>  
+        </div>  
+
+</form>
+
+		<script type="text/javascript"> 
+			$(document).on('submit','#add_item', function(e){
+			
+				e.preventDefault();
+				$.ajax({
+					type: 'POST',
+					url: '/create_peticion/',
+					data: {
+						peticion:$('#peticion').val(),
+						tipo_contacto:$('#tipo_contacto').val(),
+						organizacion:$('#organizacion').val(),
+						contacto:$('#contacto').val(),
+						origen:$('#origen').val(),
+						asunto:$('#asunto').val(),
+						descripcion:$('#descripcion').val(),
+						impacto:$('#impacto').val(),
+						urgencia:$('#urgencia').val(),
+						csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+					},
+					sucess:function(){
+						alert('Created New');
+					
+					}
+				});
+			
+			})
+			
+		</script>			
+				
+ 
+
+<script>
+    var form_options = { target: '#modal', success: function(response) {} };
+    $('#add_item').ajaxForm(form_options);
+</script>
+		
+				
+
+<script type="text/JavaScript">
+   //get a reference to the select element
+   
+    $select = $('#tipo_contacto');
+    //request the JSON data and parse into the select element
+    $.ajax({
+      url: '/api/get_tipo_contacto/',
+      dataType:'JSON',
+      success:function(data){
+        //clear the current content of the select
+        //iterate over the data and append a select option
+        
+        $.each(data, function(key, val){
+          $select.append('<option value="' + val.id + '">' + val.contacto + '</option>');
+        })
+      },
+    });
+      
+function getOrganizacion() {
+    
+    //get a reference to the select element
+    $select = $('#organizacion');
+    $city = $('#contacto');
+    //request the JSON data and parse into the select element
+    
+    var c_id = ($("select[name='tipo_contacto'] option:selected").attr('value'));
+    c_url = "/api/get_organizacion/"+c_id+"/";
+    
+    $.ajax({
+      
+      url: c_url,
+      dataType:'JSON',
+      success:function(data1){
+        //clear the current content of the select
+        $select.html('');
+        
+        $.each(data1, function(key, val){
+          $select.append('<option value="' + val.id + '">' + val.nombre_organizacion + '</option>');
+        })
+        getContacto();
+      },
+      
+    });
+   
+}
+
+function getContacto() {
+    
+    //get a reference to the select element
+    $select = $('#contacto');
+    //request the JSON data and parse into the select element
+    var s_id = ($("select[name='organizacion'] option:selected").attr('value'));
+    s_url = "/api/get_contacto/"+s_id+"/";
+    
+    $.ajax({
+      url: s_url,
+      dataType:'JSON',
+      success:function(data1){
+        //clear the current content of the select
+        $select.html('');
+        //iterate over the data and append a select option
+        
+        $.each(data1, function(key, val){
+          $select.append('<option value="' + val.id + '">' + val.nombre_contacto + '</option>');
+        })
+      },
+      
+    });
+   
+}
+</script>  
+				
+
+										

@@ -1,0 +1,484 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+		
+		
+<style>
+.chart-legend li span{
+    display: inline-block;
+    width: 20px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+ul {
+list-style-type: none;
+}
+
+
+#myTable{
+	width:100%;
+}
+
+
+
+th {
+ white-space: nowrap;
+ font-size: 13px;
+}
+
+
+
+#chart, #js-legend, #js-legend2, #js-legend3{
+
+    max-width: 100%;
+    height: auto;
+
+} 
+
+
+#chart2, #chart3, #chart4, #js-legend, #js-legend2, #js-legend3{
+
+    max-height: 100%;
+    width: auto;
+
+} 
+
+
+
+
+</style>			
+		
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Configuracion</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Configuracion/tabs.html" %}
+			
+				<h3>Ver Resumen de Configuracion</h3><br>
+				
+
+				
+							
+				
+				
+				
+            <div class="row">			
+				
+				<div class="col-lg-12">
+				
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Elemento de configuracion por Hardware/Software</b></center>
+                        </div>
+						
+						<div class="panel-body">				
+				
+				
+				<center>
+				<canvas id="chart" width="1200" height="400"></canvas>	
+				</center>
+
+						</div>
+						</div>
+				
+				</div>
+			</div>	
+			
+			
+<div class="row">
+			
+				<div class="col-lg-4">
+				
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Elemento de configuracion Por Activo</b></center>
+                        </div>
+						
+						<div class="panel-body">				
+				
+				<center>
+				<canvas id="chart2" width="250" height="285"></canvas>
+				
+				</center>
+				<div id="js-legend" class="chart-legend"></div>
+				<br>
+
+						</div>
+						</div>
+				
+				</div>				
+				
+
+				<div class="col-lg-4">
+				
+				
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Elemento de configuracion Por Criticidad</b></center>
+                        </div>
+						
+						<div class="panel-body">				
+
+				<center>
+				<canvas id="chart3" width="250" height="285"></canvas>
+				</center>
+				
+				<div id="js-legend2" class="chart-legend"></div>
+
+						</div>
+						</div>
+				
+				</div>					
+			
+				
+		
+
+				<div class="col-lg-4">
+				
+				
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Elemento de configuracion Por Contacto</b></center>
+                        </div>
+						
+						<div class="panel-body">				
+
+							<center>
+							<canvas id="chart4" width="250" height="285"></canvas>
+							</center>
+							<div id="js-legend3" class="chart-legend"></div>
+							<br>
+							
+						</div>
+						</div>
+
+
+				</div>
+</div>			
+				
+				
+				
+			<!--
+				
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Por Criticidad
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+						<thead>
+						  <tr>
+							<th>Criticidad</th>
+							<th>Total</th>
+
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in lista%} 
+							<tr>
+							<td>{{ item.criticidad}}</td>
+							<td>{{ item.num}}</td>
+
+							</tr>
+						  {%endfor%}
+						</tbody>
+					  </table>
+		                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Por Elementos de Configuracion
+                        </div>
+						
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+						<thead>
+						  <tr>
+							<th>Nombre EC</th>
+							<th>Total</th>
+
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item2 in lista2%} 
+							<tr>
+							<td>{{ item2.nombre_ec}}</td>
+							<td>{{ item2.num}}</td>
+
+							</tr>
+						  {%endfor%}
+						</tbody>
+					  </table>
+		                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+         </div>
+		 <br>
+		 					<table class="table table-striped table-bordered table-hover" id="myTable">
+						<thead>
+						  <tr>
+							<th>EC<i class="fa fa-fw fa-sort"></i></th>
+							<th>Total<i class="fa fa-fw fa-sort"></i></th>
+							<th>Activo<i class="fa fa-fw fa-sort"></i></th>
+							<th>Inactivo<i class="fa fa-fw fa-sort"></i></th>
+							<th>Alto<i class="fa fa-fw fa-sort"></i></th>
+							<th>Medio<i class="fa fa-fw fa-sort"></i></th>
+							<th>Bajo<i class="fa fa-fw fa-sort"></i></th>
+	
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in lista3 %} 
+							<tr>
+							<td>{{item.ec}}</td>
+							<td>{{ item.total}}</td>
+							<td>{{ item.activo}}</td>
+							<td>{{ item.inactivo}}</td>
+							<td>{{ item.alto }}</td>
+							<td>{{ item.medio}}</td>
+							<td>{{ item.bajo}}</td>
+							
+							
+							</tr>
+						  {%endfor%}
+						</tbody>
+					  </table>	
+		 -->
+
+	
+
+	
+ <script>
+
+   var pieData = [
+            {% for item4, label4 in set3 %}
+                {
+                    value: {{item4.total}},
+                    label: "{{label4.contacto}}",
+                    color : getRandomColor()
+
+					
+                },
+                {% endfor %}
+ 
+ 
+         ];
+		 
+
+var options = {
+    segmentShowStroke: false,
+    animateRotate: true,
+    animateScale: false,
+    percentageInnerCutout: 50,
+    tooltipTemplate: "<%= label %>: <%= value %>"
+	}
+	
+ 
+   // get bar chart canvas
+   var ctx = document.getElementById("chart4").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw pie chart
+   var myChart = new Chart(ctx).Pie(pieData);
+   
+   document.getElementById("js-legend3").innerHTML = myChart.generateLegend();
+ 
+ 
+ 
+function getRandomColor() {
+
+    var r = (Math.round(Math.random()* 127) + 127).toString(16);
+    var g = (Math.round(Math.random()* 127) + 127).toString(16);
+    var b = (Math.round(Math.random()* 127) + 127).toString(16);
+    return '#' + r + g + b;
+
+} 
+ 
+</script>
+
+	
+	
+
+
+	
+ <script>
+
+   var pieData = [
+            {% for item3, label3 in set2 %}
+                {
+                    value: {{item3.total}},
+                    label: "{{label3.criticidad}}",
+                    color : getRandomColor()
+
+					
+                },
+                {% endfor %}
+ 
+ 
+         ];
+		 
+
+var options = {
+    segmentShowStroke: false,
+    animateRotate: true,
+    animateScale: false,
+    percentageInnerCutout: 50,
+    tooltipTemplate: "<%= label %>: <%= value %>"
+	}
+	
+ 
+   // get bar chart canvas
+   var ctx = document.getElementById("chart3").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw pie chart
+   var myChart = new Chart(ctx).Doughnut(pieData);
+   
+   document.getElementById("js-legend2").innerHTML = myChart.generateLegend();
+ 
+ 
+ 
+function getRandomColor() {
+
+    var r = (Math.round(Math.random()* 127) + 127).toString(16);
+    var g = (Math.round(Math.random()* 127) + 127).toString(16);
+    var b = (Math.round(Math.random()* 127) + 127).toString(16);
+    return '#' + r + g + b;
+
+} 
+ 
+</script>
+
+
+
+	
+
+ <script>
+
+   var pieData = [
+            {% for item2, label2 in set %}
+			
+			
+			
+                {
+				
+					value: {{item2.total}},
+					
+					label:
+					{% if label2.activo %}
+					"Activo",
+					{% else %}
+					"Inactivo",
+					{% endif %}
+			
+					
+                    color : getRandomColor()
+
+					
+                },
+                {% endfor %}
+ 
+ 
+         ];
+		 
+
+var options = {
+    segmentShowStroke: false,
+    animateRotate: true,
+    animateScale: false,
+    percentageInnerCutout: 50,
+    tooltipTemplate: "<%= label %>: <%= value %>"
+	}
+	
+ 
+   // get bar chart canvas
+   var ctx = document.getElementById("chart2").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw pie chart
+   var myChart = new Chart(ctx).Pie(pieData);
+   
+   document.getElementById("js-legend").innerHTML = myChart.generateLegend();
+ 
+ 
+ 
+function getRandomColor() {
+
+    var r = (Math.round(Math.random()* 127) + 127).toString(16);
+    var g = (Math.round(Math.random()* 127) + 127).toString(16);
+    var b = (Math.round(Math.random()* 127) + 127).toString(16);
+    return '#' + r + g + b;
+
+} 
+ 
+</script>
+		 
+
+
+			
+<script>
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels %}
+                  "{{item.ec}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in values %}
+                      {{item.total}},
+                    {% endfor %}]
+      }
+      ]
+   }
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   new Chart(mychart).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+   });
+ 
+</script>
+	
+			 
+		 
+		 
+		 
+		{% endblock contenido %}
+		

@@ -1,0 +1,72 @@
+{% load static %}
+
+
+
+<style>
+.scale
+{
+    height: 20px; 
+    width: 20px;
+	align: left;
+}	
+
+p
+{
+	text-align: left;
+	height: 10px; 
+	font-size: 18px;
+}	
+
+
+
+
+</style>
+
+
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" >
+				
+				
+				<p><img class="scale" src="{% static 'icon/icon.ico' %}" /> Sistema para Control de Procesos en la Gestion de Servicios en el area de Ventas</p>
+				
+
+				</a>
+            </div>
+            <!-- /.navbar-header -->
+
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <p><i class="fa fa-user fa-fw"></i> Bienvenido {{user.username|capfirst}} <i class="fa fa-caret-down"> </i></p>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user" >
+
+					<!--
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil de Usuario: {{user.username|capfirst}}</a>
+
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuraciones</a>
+                        </li>
+                        <li class="divider"></li>
+						
+					-->	
+						
+                        <li><a href="/cerrar/"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+			
+			

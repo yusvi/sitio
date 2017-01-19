@@ -1,0 +1,401 @@
+
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+
+		{% block contenido %}
+
+
+		
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Incidentes y Provisiones del servicio</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Peticiones/tabs.html" %}
+				
+<style>
+div.cities {
+	font-family: sans-serif, Helvetica, Verdana;
+	font-size:100%;
+} 
+
+textarea {
+    resize: none;
+    width: 20em;
+    height: 6em;
+	margin-top: 5px;
+}
+
+input {
+    margin-top: 2px;
+}
+
+
+
+fieldset { 
+	padding-bottom:30px;
+	
+}
+
+
+table{
+    width:100%;
+}
+
+table#tab2{
+    width:100%;
+}
+
+
+table tr td:first-child { width: 10em; }
+
+input[type=text], select, textarea, input {
+    width: 100%;
+    padding: 1px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+  #section1 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+  #section2 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+  #section3 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+  #section4 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+  #section5 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+  #section6 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+  #section7 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+
+  #boton.affix  {
+      bottom:0px;
+  }
+  
+  body {
+
+  }
+
+
+    #nav10.affix  {
+      top: 40px;
+      width: 100%;
+	  color: white;
+  }
+
+.sections {display:none; 
+    padding-right: 30px;
+	  padding-left:30px;
+	  padding-bottom:50px;
+}
+.sections:target {display:block; }  
+
+
+
+
+  
+</style>
+
+
+<div class="navContainer">
+<nav class="navbar navbar-inverse" id="nav10" data-spy="affix" data-offset-top="197">
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#section1">Peticion</a></li>
+          <li><a href="#section2">Productos</a></li>
+          <li><a href="#section3">Analista</a></li>
+		  <li><a href="#section4">Acuerdo</a></li>
+		  <li><a href="#section5">Seguimientos</a></li>
+		  <li><a href="#section6">Cierre</a></li>
+		  <li><a href="#section7">Entregas</a></li>
+
+        </ul>
+
+</nav>  
+</div>
+
+				
+	<div class="cities">
+        <form action="." method="post" id="form">
+            {% csrf_token %}
+			<!--
+			 <button id="boton" type="submit" value="submit" class="submit" id="validate" data-spy="affix" data-offset-top="197"  /> </button>
+			-->
+
+			
+			
+            <div id="section1"  class="sections" >
+			
+			<h2>{% if form.instance.id %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" 
+			 href="/peticion/{{form.instance.id}}/#section1>
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Editar Peticion {{form.instance.id}}
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+		
+			{% else %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Nueva Peticion{% endif %}</h2> 
+			<br>
+
+						<button type="button" class="save btn btn-primary btn-xs" data-toggle="modal" data-target="#remoteModal4" ><span class="glyphicon glyphicon-plus"> Contacto </span></button>  
+			<br><br>
+			
+						<!-- Modal -->  
+						<div class="modal fade" id="remoteModal4" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true" data-remote="{% url 'add_contacto' %}"  >
+						<div class="modal-dialog modal-sl">
+						<div class="modal-content"></div>
+						</div>
+						</div><!-- /.modal -->  					
+			
+					
+					<table>
+					
+					{% for field in form %}
+					<tr>
+					<td>{{field.label_tag}}</td><td> {{field}}</td>
+					</tr>
+					{% endfor %}
+					
+					</table>
+			
+			
+			</div>
+			
+		
+            <div id="section2"  class="sections">
+	
+			<h2>{% if form.instance.id %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Editar Productos 
+			<h3>Peticion {{form.instance.id}}</h3>
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+		
+			{% else %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Nuevos Productos{% endif %}</h2> 	
+	
+                {{ producto_form.management_form }}
+                {{ producto_form.non_form_errors }}
+                {% for form in producto_form %}
+					{{form.id}}
+                    <div class="inline {{ producto_form.prefix }}">
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+                    </div>
+
+				
+                {% endfor %}
+            </div>
+
+            <div id="section3"  class="sections">
+			<h2>{% if form.instance.id %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Editar Analista
+			<h3>Peticion {{form.instance.id}}</h3>
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+		
+			{% else %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Nuevo Analista{% endif %}</h2> 	
+			
+                {{ analista_form.management_form }}
+                {{ analista_form.non_form_errors }}
+                {% for form in analista_form %}
+                    {{ form.id }}
+                    
+					<table>
+					<tr>
+
+					<td>{{form}}</td>
+
+					</tr>
+					</table>
+                    
+                {% endfor %}
+            </div>
+			
+
+
+            <div id="section4"  class="sections">
+			<h2>{% if form.instance.id %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Editar Acuerdo
+			<h3>Peticion {{form.instance.id}}</h3>
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+		
+			{% else %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Nuevo Acuerdo{% endif %}</h2> 	
+			
+                {{ acuerdo_form.management_form }}
+                {{ acuerdo_form.non_form_errors }}
+                {% for form in acuerdo_form %}
+                    {{ form.id }}
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+                {% endfor %}
+				
+            </div>
+
+            <div id="section5"  class="sections">
+			<h2>{% if form.instance.id %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Editar Seguimientos
+			<h3>Peticion {{form.instance.id}}</h3>
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+		
+			{% else %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Nuevos Seguimientos{% endif %}</h2> 	
+			
+                {{ seguimiento_form.management_form }}
+                {{ seguimiento_form.non_form_errors }}
+                {% for form in seguimiento_form %}
+                    {{ form.id }}
+                    <div class="inline {{ seguimiento_form.prefix }}">
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+                    </div>
+                {% endfor %}
+            </div>
+			
+            <div id="section6"  class="sections">
+			<h2>{% if form.instance.id %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Editar Cierre
+			<h3>Peticion {{form.instance.id}}</h3>
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+		
+			{% else %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Nuevo Cierre{% endif %}</h2> 	
+			
+                {{ cierre_form.management_form }}
+                {{ cierre_form.non_form_errors }}
+                {% for form in cierre_form %}
+                    {{ form.id }}
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+                {% endfor %}
+            </div>
+			
+            <div id="section7"  class="sections">
+			<h2>{% if form.instance.id %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Editar Entregas
+			<h3>Peticion {{form.instance.id}}</h3>
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+		
+			{% else %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Nuevas Entregas{% endif %}</h2> 	
+			
+                {{ entrega_form.management_form }}
+                {{ entrega_form.non_form_errors }}
+                {% for form in entrega_form %}
+                    {{ form.id }}
+                    <div class="inline {{ entrega_form.prefix }}">
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+                    </div>
+                {% endfor %}
+            </div>
+			
+           
+		
+		</form>
+		
+	</div>
+
+
+	</div>
+
+	
+    <script type="text/javascript">
+
+	
+        $(function() {
+            $(".inline.{{ producto_form.prefix }}").formset({
+                prefix: "{{ producto_form.prefix }}",
+            })
+            $(".inline.{{ analista_form.prefix }}").formset({
+                prefix: "{{ analista_form.prefix }}",
+            })
+            $(".inline.{{ acuerdo_form.prefix }}").formset({
+                prefix: "{{ acuerdo_form.prefix }}",
+            })
+            $(".inline.{{ seguimiento_form.prefix }}").formset({
+                prefix: "{{ seguimientoform.prefix }}",
+            })
+            $(".inline.{{ cierre_form.prefix }}").formset({
+                prefix: "{{ cierre_form.prefix }}",
+            })
+            $(".inline.{{ entrega_form.prefix }}").formset({
+                prefix: "{{ entrega_form.prefix }}",
+            })
+        });
+			
+	
+	
+    </script>
+
+
+	{% endblock contenido %}

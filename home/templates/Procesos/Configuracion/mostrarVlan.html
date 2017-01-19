@@ -1,0 +1,102 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+
+		
+<style>
+
+#myTable{
+	width:100%;
+}
+
+th {
+ white-space: nowrap;
+ font-size: 13px;
+}
+
+
+</style>			
+		
+		
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Configuracion</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Configuracion/tabs.html" %}
+			
+				<h3>Ver Vlans</h3><br>
+				
+				<a href="/crear_Vlan/#section1"><button class="save btn btn-success"><span class="glyphicon glyphicon-plus"></span> Vlan</button></a>
+				
+				<br><br>
+					<table class="table table-striped table-bordered table-hover" id="myTable">
+						<thead>
+						  <tr>
+							<th>EC<i class="fa fa-fw fa-sort"></i></th>
+							<th>Criticidad<i class="fa fa-fw fa-sort"></i></th>
+							<th>Grupo<i class="fa fa-fw fa-sort"></i></th>
+							<th>Registro<i class="fa fa-fw fa-sort"></i></th>
+							<th>Vlan<i class="fa fa-fw fa-sort"></i></th>
+							<th>Nombre<i class="fa fa-fw fa-sort"></i></th>
+							<th>Descripcion<i class="fa fa-fw fa-sort"></i></th>
+
+							<th>Delete</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in lista %} 
+							<tr>
+							<td><a href="/vlan/{{item.ec}}/#section1">EC {{ item.ec}} </a></td>
+							<td>{{ item.criticidad}}</td>
+							<td>{{ item.grupo}}</td>
+							<td>{{ item.fecha_registro}}</td>
+							<td>Vlan {{ item.vlan}}</td>
+							<td>{{ item.nombre}}</td>
+							<td>{{ item.descripcion}}</td>
+							
+							<td>
+							<button type="button" class="btn btn-danger btn-xs" data-remote="{% url 'eliminar_vlan' item.ec  %}" data-toggle="modal" data-target="#remoteModal15" 
+							data-backdrop="static" data-keyboard="false">
+							<span class="glyphicon glyphicon-trash"></span></button>  
+							</td>  
+							
+							</tr>
+						  {%endfor%}
+						</tbody>
+					  </table>
+					  
+					  
+		
+						<div class="modal fade" id="remoteModal15" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true"   >
+						<div class="modal-dialog modal-sl">
+						<div class="modal-content">
+						
+
+						</div>
+						</div>
+						</div><!-- /.modal --> 						  
+					  
+					  
+<script type="text/javascript">
+
+$(document).ready(function() 
+    { 
+        $("#myTable").tablesorter(); 
+		
+    } 
+); 
+
+
+	
+</script>						  
+					  
+		
+         
+		{% endblock contenido %}
+		

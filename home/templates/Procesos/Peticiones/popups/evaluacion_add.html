@@ -1,0 +1,54 @@
+
+{% load widget_tweaks %}
+
+<!--<form id="add_item2" class="form" role="form"  method="post">	-->
+<form action="{% url 'add_evaluacion' %}" class="form" role="form"  method="post">
+
+
+            <div class="modal-header">
+                <button type="button" class="close" 
+                  data-dismiss="modal" aria-hidden="true">
+                  <span class="glyphicon glyphicon-remove-circle"></span>
+                </button>
+				<h4>Agregar Encuesta</h4>
+            </div>
+					
+					
+            <div class="modal-body">
+					{% csrf_token %}
+
+						<table id="tab2">
+
+						<tr><td>{{form.proceso.label_tag}} </td> <td> {{form.proceso|attr:"add_class=form-control required"}}</td></tr>
+						<tr><td>{{form.tipo_contacto.label_tag}} </td> <td> {{form.tipo_contacto|attr:"add_class=form-control required"}}</td></tr>
+						<tr><td>{{form.organizacion.label_tag}} </td> <td> {{form.organizacion|attr:"add_class=form-control required"}}</td></tr>
+						<tr><td>{{form.contacto.label_tag}} </td> <td> {{form.contacto}}</td></tr>
+						<tr><td>{{form.fecha_encuesta.label_tag}} </td> <td> {{form.fecha_encuesta|attr:"add_class=form-control required"}}</td></tr>
+
+						</table>					
+					
+			</div>
+					
+
+					
+			<div class="modal-footer">  
+	
+			<button type="submit" name="save" class="btn btn-success" >Save</button>
+			<!--<a href="/mostrar_Encuesta" class="btn btn-default" role="button"><span class="glyphicon glyphicon-remove"></span> No</a>-->
+			<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>  
+
+			
+			
+			</div> 
+						
+					
+
+</form>
+	
+
+
+
+
+
+
+

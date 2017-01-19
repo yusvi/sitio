@@ -1,0 +1,63 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Incidentes y Provisiones del servicio</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Peticiones/tabs.html" %}
+			
+
+				<h3>Nuevo Producto</h3><br>
+				  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+				  <table>
+						<tr><td>{{ form.servicio.label_tag }} </td><td> {{ form.servicio }}</td></tr>
+						<tr><td>{{ form.subcategoria.label_tag }} </td><td> {{ form.subcategoria }}</td></tr>
+						<tr><td>{{ form.marca.label_tag }} </td><td> {{ form.marca }} 
+						
+
+						<button type="button" class="save btn btn-success btn-xs" data-toggle="modal" data-target="#remoteModal"><span class="glyphicon glyphicon-plus"></span></button>  
+						  
+						<!-- Modal -->  
+						<div class="modal fade" id="remoteModal" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true" data-remote="{% url 'add_marca' %}" >
+						<div class="modal-dialog modal-sm">
+						<div class="modal-content"></div>
+						</div>
+						</div><!-- /.modal -->  
+						
+
+						</td></tr>
+						<tr><td>{{ form.modelo.label_tag }} </td><td> {{ form.modelo }}
+
+						<button type="button" class="save btn btn-success btn-xs" data-toggle="modal" data-target="#remoteModal2"><span class="glyphicon glyphicon-plus"></span></button>  
+						  
+						<!-- Modal -->  
+						<div class="modal fade" id="remoteModal2" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true" data-remote="{% url 'add_modelo' %}" >
+						<div class="modal-dialog modal-sm">
+						<div class="modal-content"></div>
+						</div>
+						</div><!-- /.modal -->  
+
+						</td></tr>
+						<tr><td>{{ form.descripcion_producto.label_tag}} </td><td>  {{ form.descripcion_producto}}</td></tr>
+						
+						</table>
+						
+						<button type="submit" class="save btn btn-default">Save</button>
+						<a href="/mostrar_Producto" class="btn btn-default" role="button">Cancel</a>
+
+					</form>
+				<br><br>
+								
+         
+		{% endblock contenido %}
+		
+

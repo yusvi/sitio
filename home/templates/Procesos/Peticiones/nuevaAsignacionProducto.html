@@ -1,0 +1,57 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Incidentes y Provisiones del servicio</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Peticiones/tabs.html" %}
+			
+
+				<h3>Nueva Asignacion de Producto</h3><br>
+				  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+						
+						<p>{{ form.tipo.label_tag }}{{ form.tipo }} </p>
+						<p>{{ form.peticion.label_tag }}{{ form.peticion }}
+						<button type="button" class="save btn btn-success btn-xs" data-toggle="modal" data-target="#remoteModal3"><span class="glyphicon glyphicon-plus"></span></button>  
+						   
+						<!-- Modal -->  
+						<div class="modal fade" id="remoteModal3" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true" data-remote="{% url 'add_peticion' %}" >
+						<div class="modal-dialog modal-sl">
+						<div class="modal-content"></div>
+						</div>
+						</div><!-- /.modal -->  
+						
+						</p>
+						<p>{{ form.producto.label_tag }}{{ form.producto }}
+						<button type="button" class="save btn btn-success btn-xs" data-toggle="modal" data-target="#remoteModal"><span class="glyphicon glyphicon-plus"></span></button>  
+						  
+						<!-- Modal -->  
+						<div class="modal fade" id="remoteModal" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true" data-remote="{% url 'add_producto' %}" >
+						<div class="modal-dialog modal-sl">
+						<div class="modal-content"></div>
+						</div>
+						</div><!-- /.modal -->  
+						</p>
+						<p>{{ form.cantidad.label_tag }}{{ form.cantidad }}
+						
+						</p>
+						
+						<button type="submit" class="save btn btn-default">Save</button>
+						<a href="/mostrar_Asignacion_producto" class="btn btn-default" role="button">Cancel</a>
+					
+					</form>
+				<br><br>
+								
+         
+		{% endblock contenido %}
+		
+

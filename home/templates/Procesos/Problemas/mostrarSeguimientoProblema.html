@@ -1,0 +1,57 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Problemas</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Problemas/tabs.html" %}
+			
+				<h3>Ver Seguimientos de Problemas</h3><br>
+				
+				<a href="/nuevo_Seguimiento_problema"><button class="save btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
+				
+				<br><br>
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+						  <tr>
+							<th>#</th>
+							<th>Problema</th>
+							<th>Asignacion</th>
+							<th>Fecha Seguimiento</th>
+							<th>Observaciones</th>
+							
+							
+							<th>Edit</th>
+							<th>Delete</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in seguimiento%} 
+							<tr>
+							<td>{{ item.id}}</td>
+							<td>{{ item.problema}}</td>
+							<td>{{ item.asignacion}}</td>
+							<td>{{ item.fecha_seguimiento}}</td>
+							<td>{{ item.observaciones}}</td>
+							
+							
+							<td><a href="{% url 'editar_seguimiento_problema' item.id  %}" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+							<td><a href="{% url 'eliminar_seguimiento_problema' item.id %}" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button></a></li></td>
+   
+							
+							</tr>
+						  {%endfor%}
+						</tbody>
+					  </table>
+		
+         
+		{% endblock contenido %}
+		

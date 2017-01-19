@@ -1,0 +1,32 @@
+
+
+{% load widget_tweaks %}
+
+<form action="{% url 'eliminar_maquina' object.id %}" class="form" role="form"  method="post">
+
+					
+					
+            <div class="modal-header">
+
+				<h3>Eliminar Maquina virtual</h3>
+            </div>
+					
+					
+            <div class="modal-body">
+					{% csrf_token %}
+					¿Estas seguro de eliminar "EC {{ object }}" ?
+					<br><br>
+			</div>
+					
+
+					
+			<div class="modal-footer">  
+	
+			<button type="submit" name="save" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+			<button type="submit" name="cancel" class="btn btn-default" ><span class="glyphicon glyphicon-remove"></span> No</button>	
+
+			
+			
+			</div>  
+								
+</form>

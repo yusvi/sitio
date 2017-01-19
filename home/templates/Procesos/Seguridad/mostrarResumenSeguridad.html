@@ -1,0 +1,66 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Seguridad</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Seguridad/tabs.html" %}
+			
+				<h3>Ver Resumen de Seguridad</h3><br>
+				
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Por Cuestionario de Conocimientos
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+						<thead>
+						  <tr>
+							<th>Organizacion</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Calificacion</th>
+
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in lista%} 
+							<tr>
+							<td>{{ item.nombre_organizacion}}</td>
+							<td>{{ item.nombre_contacto}}</td>
+							<td>{{ item.apellido_contacto}}</td>
+							<td>{{ item.calificacion}}</td>
+
+							</tr>
+						  {%endfor%}
+						</tbody>
+					  </table>
+		                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+				
+				
+
+				
+         </div>
+		{% endblock contenido %}
+		

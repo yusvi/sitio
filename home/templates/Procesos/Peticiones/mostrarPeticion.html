@@ -1,0 +1,108 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+
+		
+<style>
+
+#myTable{
+	width:100%;
+}
+
+th {
+ white-space: nowrap;
+ font-size: 13px;
+}
+
+</style>
+		
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Incidentes y Provisiones del servicio</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Peticiones/tabs.html" %}
+			
+				<h3>Ver Peticiones</h3><br>
+				
+				<a href="/crear_Peticion/#section1"><button class="save btn btn-success btn-m"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>
+				
+				
+				<br><br>
+						<table class="table table-striped table-bordered table-hover" id="myTable">
+						<thead>
+						  <tr>
+							<th>Peticion <i class="fa fa-fw fa-sort"></i></th>
+							<th>Tipo<i class="fa fa-fw fa-sort"></i></th>
+							<th>Organizacion<i class="fa fa-fw fa-sort"></i></th>
+							<th>Asunto<i class="fa fa-fw fa-sort"></i></th>
+							<th>Productos<i class="fa fa-fw fa-sort"></i></th>
+							<th>Analista<i class="fa fa-fw fa-sort"></i></th>
+							<th>Asignacion<i class="fa fa-fw fa-sort"></i></th>
+							<th>Solucion<i class="fa fa-fw fa-sort"></i></th>
+							<th>Seguimientos<i class="fa fa-fw fa-sort"></i></th>
+							<th>Cierre<i class="fa fa-fw fa-sort"></i></th>
+							<th>Entregas<i class="fa fa-fw fa-sort"></i></th>
+							<th>Delete</td>
+
+
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item2 in lista2%} 
+							<tr>
+							<td><a href="/peticion/{{item2.id}}/#section1">Peticion {{ item2.id}}</a> </td>
+							<td>{{ item2.Tipo}}</td>
+							<td>{{ item2.Organizacion}}</td>
+							<td>{{ item2.Asunto}}</td>
+							<td>{{ item2.Productos}}</td>
+							<td>{{item2.Nombre}} {{item2.Apellido}}</td>
+							<td>{{ item2.Fecha_Asignacion}}</td>
+							<td>{{ item2.Fecha_Solucion}}</td>
+							<td>{{ item2.Seguimientos}}</td>
+							<td>{{ item2.Cierre}}</td>
+							<td>{{ item2.Entrega}}</td>
+
+							<td>
+							<button type="button" class="btn btn-danger btn-xs" data-remote="{% url 'eliminar_peticion' item2.id %}" data-toggle="modal" data-target="#remoteModal10" 
+							data-backdrop="static" data-keyboard="false">
+							<span class="glyphicon glyphicon-trash"></span></button>  
+							</td>
+							
+
+
+							</tr>
+						  {%endfor%}
+						</tbody>
+					  </table>
+
+						<div class="modal fade" id="remoteModal10" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true"   >
+						<div class="modal-dialog modal-sl">
+						<div class="modal-content">
+						
+
+						</div>
+						</div>
+						</div><!-- /.modal --> 
+
+	
+<script type="text/javascript">
+
+$(document).ready(function() 
+    { 
+        $("#myTable").tablesorter(); 
+		
+    } 
+); 
+
+
+	
+</script>
+         
+		{% endblock contenido %}
+		

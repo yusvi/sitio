@@ -1,0 +1,72 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Cambios</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Cambios/tabs.html" %}
+			
+				<h3>Ver Planificaciones de Cambios</h3><br>
+				
+				<a href="/nueva_Planificacion_cambio"><button class="save btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
+				
+				<br><br>
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+						  <tr>
+							<th>#</th>
+							<th>Folio Cambio</th>
+							<th>Reunion</th>
+							<th>Area Implicada</th>
+							<th>Coordinador</th>
+							<th>Hora Impacto</th>
+							<th>Duracion Impacto</th>
+							<th>Costo Impacto</th>
+							<th>Prioridad</th>
+							<th>Categoria</th>
+							<th>Descripcion despues de Aprobado</th>
+							<th>Observaciones</th>
+							<th>Plan Marcha Atras</th>
+							
+							<th>Edit</th>
+							<th>Delete</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in planificacion %} 
+							<tr>
+							<td>{{ item.id}}</td>
+							<td>{{ item.folio}}</td>
+							<td>{{ item.reunion}}</td>
+							<td>{{ item.area_implicada}}</td>
+							<td>{{ item.coordinador}}</td>
+							<td>{{ item.hora_impacto}}</td>
+							<td>{{ item.duracion_impacto}}</td>
+							<td>{{ item.costo_impacto}}</td>
+							<td>{{ item.prioridad}}</td>
+							<td>{{ item.categoria}}</td>
+							<td>{{ item.descripcion_aprobado}}</td>
+							<td>{{ item.observaciones}}</td>
+							<td>{{ item.plan_marcha_atras}}</td>
+
+							
+							<td><a href="{% url 'editar_planificacion_cambio' item.id  %}" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+							<td><a href="{% url 'eliminar_planificacion_cambio' item.id %}" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button></a></li></td>
+   
+							
+							</tr>
+						  {%endfor%}
+						</tbody>
+					  </table>
+		
+         
+		{% endblock contenido %}
+		

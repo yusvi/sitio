@@ -1,0 +1,633 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+		
+		
+<style>
+.chart-legend li span{
+    display: inline-block;
+    width: 20px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+ul {
+list-style-type: none;
+}
+
+
+#myTable{
+	width:100%;
+}
+
+
+
+
+
+
+
+th {
+ white-space: nowrap;
+ font-size: 13px;
+}
+
+
+
+#chart, #chart3, #chart4, #js-legend{
+
+    max-width: 100%;
+    height: auto;
+
+} 
+
+
+#chart2, #js-legend{
+
+    max-height: 100%;
+    width: auto;
+
+} 
+
+
+
+
+
+
+</style>
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Problemas</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Problemas/tabs.html" %}
+			
+				<h3>Ver Resumen de Problemas</h3><br>
+				
+			
+				
+
+
+
+            <div class="row">			
+				<div class="col-lg-7 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Problema por Proveedor</b></center>
+                        </div>
+						
+						<div class="panel-body">
+				
+				<div class="col-lg-12">
+				
+				<center>	
+				<canvas id="chart" width="900" height="480"></canvas>	
+				</center>
+					
+				</div>				
+				
+                        </div>
+
+                    </div>
+
+					
+
+
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Problema por Cierre</b></center>
+                        </div>
+						
+						<div class="panel-body">				
+				<div class="col-lg-12">
+				
+					<center>
+					<canvas id="chart3" width="900" height="480"></canvas>
+					</center>
+
+				</div>
+				
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Problema por Analista</b></center>
+                        </div>
+						
+						<div class="panel-body">				
+				<div class="col-lg-12">
+				
+					<center>
+					<canvas id="chart4" width="900" height="480"></canvas>
+					</center>
+
+				</div>
+				
+                        </div>
+
+                    </div>
+					
+					
+					
+					
+					
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Problema por Fecha</b></center>
+                        </div>
+						
+						<div class="panel-body">					
+				<div class="col-lg-12">				
+	
+					<table class="table table-striped table-bordered table-hover" id="myTable3">
+						<thead>
+						  <tr>
+							<th>Problema<i class="fa fa-fw fa-sort"></i></th>
+							<th>Tipo<i class="fa fa-fw fa-sort"></i></th>
+							<th>Analista<i class="fa fa-fw fa-sort"></i></th>
+							<th>Asignacion<i class="fa fa-fw fa-sort"></i></th>
+							<th>Resolucion<i class="fa fa-fw fa-sort"></i></th>
+							<th>Cierre<i class="fa fa-fw fa-sort"></i></th>
+
+							
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in lista%} 
+							<tr>
+							<td><a href="/problema/{{item.id}}/#section1">Problema {{ item.id}}</a></td>
+							<td>{{ item.Tipo}}</td>
+							<td>{{ item.Nombre}} {{ item.Apellido}}</td>
+							<td>{{ item.Fecha_Asignacion}}</td>
+							<td>{{ item.Fecha_Resolucion}}</td>
+							<td>{{ item.Fecha_Cierre}}</td>
+
+							</tr>
+
+						  {%endfor%}
+						</tbody>
+									
+					
+					  </table>		
+
+				</div>	
+
+                        </div>
+
+                    </div>						
+					
+
+
+
+
+					
+					
+					
+					
+				</div>
+
+
+				<div class="col-lg-5 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                              <center><b>Problema por Urgencia</b></center>
+                        </div>
+						
+						<div class="panel-body">
+				
+
+				<div class="col-lg-12">
+
+				<center>
+				<canvas id="chart2" width="250" height="285"></canvas>
+				</center>
+				<div id="js-legend" class="chart-legend"></div>
+
+				
+				</div>	
+
+                        </div>
+
+                    </div>
+
+					
+					
+		
+					
+					
+					
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Problema por Seguimiento</b></center>
+                        </div>
+						
+						<div class="panel-body">					
+				<div class="col-lg-12">				
+	
+
+					<table class="table table-striped table-bordered table-hover" id="myTable2">
+						<thead>
+						  <tr>
+							<th>Problema<i class="fa fa-fw fa-sort"></i></th>
+							<th>Seguimientos<i class="fa fa-fw fa-sort"></i></th>
+
+							
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in lista%} 
+							<tr>
+							<td><a href="/problema/{{item.id}}/#section1">Problema {{ item.id}}</a></td>
+
+							<td>{{ item.Seguimientos}}</td>
+
+							</tr>
+
+						  {%endfor%}
+						</tbody>
+									
+					
+					  </table>	
+	
+
+				</div>	
+
+                        </div>
+
+                    </div>					
+					
+	
+
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Problema por Estado</b></center>
+                        </div>
+						
+						<div class="panel-body">					
+				<div class="col-lg-12">				
+	
+					<table class="table table-striped table-bordered table-hover" id="myTable">
+						<thead>
+						  <tr>
+							<th>Problema<i class="fa fa-fw fa-sort"></i></th>
+							<th>Proveedor<i class="fa fa-fw fa-sort"></i></th>
+							<th>Urgencia<i class="fa fa-fw fa-sort"></i></th>
+
+							
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in lista%} 
+							<tr>
+							<td><a href="/problema/{{item.id}}/#section1">Problema {{ item.id}}</a></td>
+							<td>{{ item.Proveedor }}</td>
+							<td>{{ item.urgencia}}</td>
+
+							</tr>
+
+						  {%endfor%}
+						</tbody>
+									
+					
+					  </table>	
+
+				</div>	
+
+                        </div>
+
+                    </div>	
+
+
+
+	
+
+					
+				</div>
+
+			</div>	
+									
+
+
+									
+									
+<!--
+            <div class="row">			
+
+	
+		
+				
+				<div class="col-lg-6">
+				<center>
+				
+				<label for = "chart">Por Proveedor<br>
+				<canvas id="chart" width="600" height="300"></canvas>
+				</label>	
+				</center>
+				
+				</div>
+				
+				<div class="col-lg-6">
+				<center>
+				
+				<label for = "chart2">Por Urgencia<br><br>
+				<canvas id="chart2" width="600" height="200"></canvas>
+				</label>
+				
+				</center>
+				<div id="js-legend" class="chart-legend"></div>
+
+				</div>
+				
+			</div>
+
+			<br>
+            <div class="row">			
+				
+				<div class="col-lg-6">
+					<center>
+					<label for = "chart3">Por Cierre<br>
+					<canvas id="chart3" width="600" height="300"></canvas>
+					</label>
+					</center>
+				</div>	
+				
+				<div class="col-lg-6">
+					<center>
+					<label for = "chart4">Por Analista<br>
+					<canvas id="chart4" width="600" height="300"></canvas>
+					</label>
+					</center>
+				</div>
+
+                        
+			</div>
+
+			<br>
+            <div class="row">
+					<table class="table table-striped table-bordered table-hover" id="myTable">
+						<thead>
+						  <tr>
+							<th>Folio<i class="fa fa-fw fa-sort"></i></th>
+							<th>Tipo<i class="fa fa-fw fa-sort"></i></th>
+							<th>Proveedor<i class="fa fa-fw fa-sort"></i></th>
+							<th>Urgencia<i class="fa fa-fw fa-sort"></i></th>
+							<th>Analista<i class="fa fa-fw fa-sort"></i></th>
+							<th>Asignacion<i class="fa fa-fw fa-sort"></i></th>
+							<th>Resolucion<i class="fa fa-fw fa-sort"></i></th>
+							<th>Seguimientos<i class="fa fa-fw fa-sort"></i></th>
+							<th>Cierre<i class="fa fa-fw fa-sort"></i></th>
+
+							
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in lista%} 
+							<tr>
+							<td><a href="/problema/{{item.id}}/#section1">Problema {{ item.id}}</a></td>
+							<td>{{ item.Tipo}}</td>
+							<td>{{ item.Proveedor }}</td>
+							<td>{{ item.urgencia}}</td>
+							<td>{{ item.Nombre}} {{ item.Apellido}}</td>
+							<td>{{ item.Fecha_Asignacion}}</td>
+							<td>{{ item.Fecha_Resolucion}}</td>
+							<td>{{ item.Seguimientos}}</td>
+							<td>{{ item.Fecha_Cierre}}</td>
+
+							</tr>
+
+						  {%endfor%}
+						</tbody>
+									
+					
+					  </table>	
+        </div>
+-->
+
+
+
+
+
+
+
+									
+									
+
+
+		
+		 
+		 
+<script>
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels3 %}
+                  "{{item.Nombre}} {{item.Apellido}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in values3 %}
+                      {{item.Total}},
+                    {% endfor %}]
+      }
+      ]
+   }
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart4").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   new Chart(mychart).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+   });
+ 
+</script>		 
+		 
+		 
+		 
+<script>
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels %}
+                  "{{item.Proveedor}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in values %}
+                      {{item.Total}},
+                    {% endfor %}]
+      }
+      ]
+   }
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   new Chart(mychart).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+   });
+ 
+</script>	
+
+ <script>
+
+   var pieData = [
+            {% for item2, label2 in set %}
+                {
+                    value: {{item2.total}},
+                    label: "{{label2.urgencia}}",
+                    color : getRandomColor()
+
+					
+                },
+                {% endfor %}
+ 
+ 
+         ];
+		 
+
+var options = {
+    segmentShowStroke: false,
+    animateRotate: true,
+    animateScale: false,
+    percentageInnerCutout: 50,
+    tooltipTemplate: "<%= label %>: <%= value %>"
+	}
+	
+ 
+   // get bar chart canvas
+   var ctx = document.getElementById("chart2").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw pie chart
+   var myChart = new Chart(ctx).Pie(pieData);
+   
+   document.getElementById("js-legend").innerHTML = myChart.generateLegend();
+ 
+ 
+ 
+function getRandomColor() {
+
+    var r = (Math.round(Math.random()* 127) + 127).toString(16);
+    var g = (Math.round(Math.random()* 127) + 127).toString(16);
+    var b = (Math.round(Math.random()* 127) + 127).toString(16);
+    return '#' + r + g + b;
+
+} 
+ 
+</script>
+		 
+		 
+		 
+<script>
+ 
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels2 %}
+                  "{{item.mes}} {{item.ano}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            bezierCurve : false,
+            data : [{% for item in values2 %}
+                      {{item.total}},
+                    {% endfor %}]
+      }]
+   }
+ 
+    Chart.defaults.global.animationSteps = 50;
+    Chart.defaults.global.tooltipYPadding = 16;
+    Chart.defaults.global.tooltipCornerRadius = 0;
+    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+    Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+    Chart.defaults.global.animationEasing = "easeOutBounce";
+    Chart.defaults.global.responsive = false;
+    Chart.defaults.global.scaleLineColor = "black";
+    Chart.defaults.global.scaleFontSize = 16;
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart3").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   var LineChartDemo = new Chart(mychart).Line(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true,
+        bezierCurve: false,
+ 
+   });
+ 
+ 
+</script>		 
+		 
+		 
+<script type="text/javascript">
+
+$(document).ready(function() 
+    { 
+        $("#myTable").tablesorter(); 
+		$("#myTable2").tablesorter(); 
+		$("#myTable3").tablesorter(); 
+		
+    } 
+); 
+
+
+	
+</script>		 
+		 
+		 
+		{% endblock contenido %}
+		

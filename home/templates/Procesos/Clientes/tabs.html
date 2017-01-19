@@ -1,0 +1,216 @@
+
+
+
+
+
+  <style>
+  
+  #nav40.affix  {
+      top: 0px;
+      width: 100%;
+	  z-index:150;
+  }
+
+  
+  #nav40 {
+    background-color: #e3f2fd;;
+    border-color: #E7E7E7;
+} 
+
+  </style>
+  
+
+
+ <ul id="nav40" class="nav nav-tabs" data-spy="affix" data-offset-top="197">
+	<li role="presentation" class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+		Informes <span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="/mostrar_Resumen_clientes">Informes</a></li>
+			</ul>
+	</li>
+
+
+
+	
+					  <li role="presentation" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Informacion <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+
+							<li role="presentation"><a href="/mostrar_Pregunta">Pregunta</a></li>
+							<!--<li role="presentation"><a href="/mostrar_Cliente">Cliente</a></li>-->
+						
+						</ul>
+					  </li>
+
+					  
+					  
+					  <li role="presentation" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Encuesta <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+
+							<li role="presentation"><a href="/mostrar_Encuesta">Mostrar todos</a></li>
+						
+						</ul>
+					  </li>	
+
+
+
+					  <li role="presentation" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Reclamacion <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+
+						<li role="presentation"><a href="/mostrar_Reclamacion">Mostrar todos</a></li>
+						
+						</ul>
+					  </li>					  
+					  
+					  
+
+</ul>
+
+
+
+
+
+
+<!--
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a href="/mostrar_Resumen_clientes">
+        Informes</a>
+      </h4>
+    </div>		
+	
+	</div>
+</div>	
+
+
+  
+  
+<div class="panel-group" id="accordion">
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Informacion</a>
+      </h4>
+    </div>		
+	
+		<div id="collapse1" class="panel-collapse collapse in">
+
+			<ul class="nav nav-tabs">
+				  <li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Preguntas <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Pregunta">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Pregunta">Mostrar</a></li>
+					</ul>
+				  </li>
+				  
+				  <li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Cliente <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nuevo_Cliente">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Cliente">Mostrar</a></li>
+					</ul>
+				  </li>
+
+			</ul>
+				
+		</div>
+	</div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Encuestas de Clientes</a>
+      </h4>
+    </div>		
+	
+		<div id="collapse1" class="panel-collapse collapse in">
+
+			<ul class="nav nav-tabs">
+				  <li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Abrir Encuesta<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Encuesta">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Encuesta">Mostrar</a></li>
+					</ul>
+				  </li>
+
+				  <li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Asignar Analista de Encuesta<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Asignacion_encuesta">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Asignacion_encuesta">Mostrar</a></li>
+					</ul>
+				  </li>
+				  
+			</ul>
+				
+		</div>
+	</div>
+	
+	
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Reclamaciones de Clientes</a>
+      </h4>
+    </div>		
+	
+		<div id="collapse1" class="panel-collapse collapse in">
+
+			<ul class="nav nav-tabs">
+				  <li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Abrir Reclamacion <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Reclamacion">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Reclamacion">Mostrar</a></li>
+					</ul>
+				  </li>
+
+				  <li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Asignar Analista de Reclamacion<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Asignacion_reclamacion">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Asignacion_reclamacion">Mostrar</a></li>
+					</ul>
+				  </li>
+				  
+			</ul>
+				
+		</div>
+	</div>	
+	
+</div>
+-->
+

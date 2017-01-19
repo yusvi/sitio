@@ -1,0 +1,53 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Seguridad</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Seguridad/tabs.html" %}
+			
+				<h3>Ver Calificaciones de Conocimientos</h3><br>
+				
+				<a href="/nueva_Calificacion_conocimientos"><button class="save btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
+				
+				<br><br>
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+						  <tr>
+							<th>#</th>
+							<th>Valor</th>
+							<th>Puntos Respuesta</th>
+							<th>Puntos Cuestionario</th>
+							
+							<th>Edit</th>
+							<th>Delete</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  {%for item in calificacion%} 
+							<tr>
+							<td>{{ item.id}}</td>
+							<td>{{ item.valor}}</td>
+							<td>{{ item.puntos_respuesta}}</td>
+							<td>{{ item.puntos_cuestionario}}</td>
+							
+							<td><a href="{% url 'editar_calificacion' item.id  %}" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+							<td><a href="{% url 'eliminar_calificacion' item.id %}" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button></a></li></td>
+   
+							
+							</tr>
+						  {%endfor%}
+						</tbody>
+					  </table>
+		
+         
+		{% endblock contenido %}
+		

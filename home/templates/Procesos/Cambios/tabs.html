@@ -1,0 +1,221 @@
+
+
+
+  <style>
+  
+  #nav40.affix  {
+      top: 0px;
+      width: 100%;
+	  z-index:150;
+  }
+
+  
+  #nav40 {
+    background-color: #e3f2fd;;
+    border-color: #E7E7E7;
+} 
+
+  </style>
+  
+
+
+ <ul id="nav40" class="nav nav-tabs" data-spy="affix" data-offset-top="197">
+	<li role="presentation" class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+		Informes <span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="/mostrar_Resumen_cambios">Informes</a></li>
+			</ul>
+	</li>
+
+
+	
+	<li role="presentation" class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+		Informacion <span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li role="presentation"><a href="/mostrar_Reunion">Reunion</a></li>
+			</ul>
+	</li>		
+
+	
+					  <li role="presentation" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Cambio <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li role="presentation"><a href="/crear_Cambio/#section1">Nuevo</a></li>
+							<li role="presentation"><a href="/mostrar_Solicitud_cambio">Mostrar todos</a></li>
+						</ul>
+					  </li>
+
+
+</ul>
+
+
+<!--
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a href="/mostrar_Resumen_cambios">
+        Informes</a>
+      </h4>
+    </div>		
+	
+	</div>
+</div>	
+  
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Solicitud de Cambio</a>
+      </h4>
+    </div>		
+	
+		<div id="collapse1" class="panel-collapse collapse in">
+
+			<ul class="nav nav-tabs">
+				  <li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Formato de Solicitud de Cambio <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Solicitud_cambio">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Solicitud_cambio">Mostrar</a></li>
+					</ul>
+				  </li>
+				  
+					<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Uso Exclusivo del Gestor de Cambio<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nuevo_Exclusivo_cambio">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Exclusivo_cambio">Mostrar</a></li>
+					</ul>
+				  </li>
+
+			</ul>
+				
+		</div>
+	</div>
+	
+	
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        Planificacion del Cambio </a>
+      </h4>
+    </div>
+		<div id="collapse2" class="panel-collapse collapse in">
+
+			<ul class="nav nav-tabs">
+				  <li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Reunion de Encargados <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Reunion">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Reunion">Mostrar</a></li>
+					</ul>
+				  </li>
+				  
+				  <li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Asistencia de Encargados <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Asistencia_reunion">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Asistencia_reunion">Mostrar</a></li>
+					</ul>
+				  </li>
+				  
+					<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Planificacion de Cambios<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Planificacion_cambio">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Planificacion_cambio">Mostrar</a></li>
+					</ul>
+				  </li>
+				  
+				  
+					<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Responsables de Cambios<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nuevo_Responsable_cambio">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Responsable_cambio">Mostrar</a></li>
+					</ul>
+				  </li>
+				  
+
+			</ul>
+
+		</div>
+	</div>
+	
+	  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        Seguimiento de Cambio</a>
+      </h4>
+    </div>
+	<div id="collapse2" class="panel-collapse collapse in">
+
+			<ul class="nav nav-tabs">
+
+					<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Seguimiento de Acciones de Responsables<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nuevo_Seguimiento_responsable">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Seguimiento_responsable">Mostrar</a></li>
+					</ul>
+				  </li>
+
+			</ul>
+
+		</div>
+	</div>
+	
+	
+	<div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        Verificacion de Cambio</a>
+      </h4>
+    </div>
+	<div id="collapse2" class="panel-collapse collapse in">
+
+			<ul class="nav nav-tabs">
+
+					<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Verificacion de Cambios<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="/nueva_Verificacion_cambio">Nuevo</a></li>
+						<li role="presentation"><a href="/mostrar_Verificacion_cambio">Mostrar</a></li>
+					</ul>
+				  </li>
+
+			</ul>
+
+		</div>
+	</div>
+	
+</div>
+-->

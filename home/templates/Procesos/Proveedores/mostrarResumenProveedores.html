@@ -1,0 +1,461 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+		
+		
+<style>
+.chart-legend li span{
+    display: inline-block;
+    width: 20px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+ul {
+list-style-type: none;
+}
+
+
+#myTable{
+	width:100%;
+}
+
+#js-legend, #js-legend2{
+	padding-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+th {
+ white-space: nowrap;
+ font-size: 13px;
+}
+
+
+
+#chart, #chart2, #js-legend, #js-legend2{
+
+    max-width: 100%;
+    height: auto;
+
+} 
+
+
+#chart3, #chart4, #js-legend, #js-legend2{
+
+    max-height: 100%;
+    width: auto;
+
+} 
+
+
+
+</style>		
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Proveedores</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Proveedores/tabs.html" %}
+			
+				<h3>Ver Resumen de Proveedores</h3><br>
+				
+
+
+			
+            <div class="row">			
+				<div class="col-lg-8 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Evaluaciones de Proveedor</b></center>
+                        </div>
+						
+						<div class="panel-body">
+				
+				<div class="col-lg-12">
+					
+				<center>
+				<canvas id="chart" width="900" height="400"></canvas>
+				</center>		
+					
+					
+				</div>				
+				
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+					
+
+
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Fecha de registro por Proveedor</b></center>
+                        </div>
+						
+						<div class="panel-body">				
+				<div class="col-lg-12">
+				
+				<center>
+				<canvas id="chart2" width="900" height="400"></canvas>
+				</center>
+
+				</div>
+				
+				
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->	
+
+
+				
+					
+					
+					
+				</div>
+
+
+				<div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                              <center><b>Proveedor por Incidente</b></center>
+                        </div>
+						
+						<div class="panel-body">
+				
+
+				<div class="col-lg-12">
+
+					<center>
+					<canvas id="chart3" width="250" height="285"></canvas>
+					</center>		
+
+				<div id="js-legend" class="chart-legend"></div>					
+				
+				</div>	
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+					
+					
+					
+				
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Proveedor por Desempeno</b></center>
+                        </div>
+						
+						<div class="panel-body">					
+				<div class="col-lg-12">				
+	
+					<center>
+					<canvas id="chart4" width="250" height="285"></canvas>
+					</center>
+					
+				<div id="js-legend2" class="chart-legend"></div>				
+
+				</div>	
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+									
+					
+					
+					
+					
+				</div>
+
+			</div>	
+							
+			
+			
+			
+<!--
+            <div class="row">			
+
+				<div class="col-lg-6">
+				
+				<center>
+				<label for = "chart">Por Proveedor<br>
+				<canvas id="chart" width="600" height="300"></canvas>
+				</label>	
+				</center>
+				
+				</div>
+				
+				<div class="col-lg-6">
+				<center>
+				
+				<label for = "chart2">Por Registro<br>
+				<canvas id="chart2" width="600" height="300"></canvas>
+				</label>
+				
+				</center>
+
+				</div>
+				
+			</div>
+
+			<br>
+            <div class="row">			
+				
+				<div class="col-lg-6">
+					<center>
+					<label for = "chart3">Por Incidente<br><br>
+					<canvas id="chart3" width="600" height="200"></canvas>
+					</label>
+					</center>
+					
+				<div id="js-legend" class="chart-legend"></div>
+					
+					
+				</div>	
+				
+				<div class="col-lg-6">
+					<center>
+					<label for = "chart4">Por Desempeno<br><br>
+					<canvas id="chart4" width="600" height="200"></canvas>
+					</label>
+					</center>
+					
+				<div id="js-legend2" class="chart-legend"></div>
+					
+					
+				</div>
+      
+			</div>
+			<br><br><br>
+-->
+						
+			
+			
+			
+			
+
+ <script>
+
+   var pieData = [
+            {% for item2, label2 in set2 %}
+                {
+                    value: {{item2.total}},
+                    label: "{{label2.desempeno}}",
+                    color : getRandomColor()
+
+					
+                },
+                {% endfor %}
+ 
+ 
+         ];
+		 
+
+var options = {
+    segmentShowStroke: false,
+    animateRotate: true,
+    animateScale: false,
+    percentageInnerCutout: 50,
+    tooltipTemplate: "<%= label %>: <%= value %>"
+	}
+	
+ 
+   // get bar chart canvas
+   var ctx = document.getElementById("chart4").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw pie chart
+   var myChart = new Chart(ctx).Doughnut(pieData);
+   
+   document.getElementById("js-legend2").innerHTML = myChart.generateLegend();
+ 
+ 
+ 
+function getRandomColor() {
+
+    var r = (Math.round(Math.random()* 127) + 127).toString(16);
+    var g = (Math.round(Math.random()* 127) + 127).toString(16);
+    var b = (Math.round(Math.random()* 127) + 127).toString(16);
+    return '#' + r + g + b;
+
+} 
+ 
+</script>
+				
+			
+
+			
+
+ <script>
+
+   var pieData = [
+            {% for item2, label2 in set %}
+                {
+                    value: {{item2.total}},
+                    label: "{{label2.incidente}}",
+                    color : getRandomColor()
+
+					
+                },
+                {% endfor %}
+ 
+ 
+         ];
+		 
+
+var options = {
+    segmentShowStroke: false,
+    animateRotate: true,
+    animateScale: false,
+    percentageInnerCutout: 50,
+    tooltipTemplate: "<%= label %>: <%= value %>"
+	}
+	
+ 
+   // get bar chart canvas
+   var ctx = document.getElementById("chart3").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw pie chart
+   var myChart = new Chart(ctx).Pie(pieData);
+   
+   document.getElementById("js-legend").innerHTML = myChart.generateLegend();
+ 
+ 
+ 
+function getRandomColor() {
+
+    var r = (Math.round(Math.random()* 127) + 127).toString(16);
+    var g = (Math.round(Math.random()* 127) + 127).toString(16);
+    var b = (Math.round(Math.random()* 127) + 127).toString(16);
+    return '#' + r + g + b;
+
+} 
+ 
+</script>
+		 			
+			
+			
+
+		 
+<script>
+ 
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels2 %}
+                  "{{item.mes}} {{item.ano}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            bezierCurve : false,
+            data : [{% for item in values2 %}
+                      {{item.total}},
+                    {% endfor %}]
+      }]
+   }
+ 
+    Chart.defaults.global.animationSteps = 50;
+    Chart.defaults.global.tooltipYPadding = 16;
+    Chart.defaults.global.tooltipCornerRadius = 0;
+    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+    Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+    Chart.defaults.global.animationEasing = "easeOutBounce";
+    Chart.defaults.global.responsive = false;
+    Chart.defaults.global.scaleLineColor = "black";
+    Chart.defaults.global.scaleFontSize = 16;
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart2").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   var LineChartDemo = new Chart(mychart).Line(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true,
+        bezierCurve: false,
+ 
+   });
+ 
+ 
+</script>		 
+		 
+		
+
+
+
+
+			
+			
+<script>
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels %}
+                  "{{item.proveedor}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in values %}
+                      {{item.total}},
+                    {% endfor %}]
+      }
+      ]
+   }
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   new Chart(mychart).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+   });
+ 
+</script>				
+			
+			
+		 
+		{% endblock contenido %}
+		

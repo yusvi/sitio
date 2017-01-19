@@ -1,0 +1,149 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+
+		{% block contenido %}
+
+
+		
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Incidentes y Provisiones del servicio</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Peticiones/tabs.html" %}
+			
+
+				<h3>Nueva Peticion</h3><br>
+				  <form id='new_Form' method="POST" enctype="multipart/form-data" >{% csrf_token %}
+						<p>
+						{{ form.peticion.label_tag }} {{ form.peticion|attr:"add_class=form-control required" }}
+						
+						</p>
+						<p>{{ form.tipo_contacto.label_tag }} 
+						<select name="tipo_contacto" id="tipo_contacto" onchange="getOrganizacion()">
+							  <option id="-1" value="-1">Select Tipo Contacto</option>
+							</select>
+						</p>
+						<p>{{ form.organizacion.label_tag }} 
+						<select name="organizacion" id="organizacion" onchange="getContacto()">
+							  <option id="-1" value="-1">Select Organizacion</option>
+							</select>
+						</p>
+						<p>{{ form.contacto.label_tag }} 
+						<select name="contacto" id="contacto" >
+							  <option id="-1" value="-1">Select Contacto</option>
+							</select>
+						
+						<button type="button" class="save btn btn-success btn-xs" data-toggle="modal" data-target="#remoteModal4" ><span class="glyphicon glyphicon-plus"></span></button>  
+						 
+						<!-- Modal -->  
+						<div class="modal fade" id="remoteModal4" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true" data-remote="{% url 'add_contacto' %}"  >
+						<div class="modal-dialog modal-sl">
+						<div class="modal-content"></div>
+						</div>
+						</div><!-- /.modal -->  
+			
+						
+						</p>
+						<p>{{ form.origen.label_tag }}{{ form.origen|attr:"add_class=form-control required" }}</p>
+						<p>{{ form.asunto.label_tag }}{{ form.asunto|attr:"add_class=form-control required" }}</p>
+						<p>{{ form.descripcion.label_tag }}{{ form.descripcion|attr:"add_class=form-control required"}}</p>
+						<p>{{ form.impacto.label_tag }}{{ form.impacto|attr:"add_class=form-control required" }}</p>
+						<p>{{ form.urgencia.label_tag }}{{ form.urgencia |attr:"add_class=form-control required"}}</p>
+						
+						<button type="submit" class="save btn btn-default">Save</button>
+						<a href="/mostrar_Peticion" class="btn btn-default" role="button">Cancel</a>
+					
+					</form>
+				<br><br>
+
+
+				
+				
+<script type="text/JavaScript">
+   //get a reference to the select element
+		$select = $('#tipo_contacto');
+		//request the JSON data and parse into the select element
+		$.ajax({
+		  url: '/api/get_tipo_contacto/',
+		  dataType:'JSON',
+		  success:function(data){
+			//clear the current content of the select
+			//iterate over the data and append a select option
+			
+			$.each(data, function(key, val){
+			  $select.append('<option value="' + val.id + '">' + val.contacto + '</option>');
+			})
+		  },
+		});
+		
+		
+function getOrganizacion() {
+    
+    //get a reference to the select element
+    $select = $('#organizacion');
+    $city = $('#contacto');
+    //request the JSON data and parse into the select element
+    
+    var c_id = ($("select[name='tipo_contacto'] option:selected").attr('value'));
+    c_url = "/api/get_organizacion/"+c_id+"/";
+    
+    $.ajax({
+      
+      url: c_url,
+      dataType:'JSON',
+      success:function(data1){
+        //clear the current content of the select
+        $select.html('');
+        
+        $.each(data1, function(key, val){
+          $select.append('<option value="' + val.id + '">' + val.nombre_organizacion + '</option>');
+        })
+        getContacto();
+      },
+      
+    });
+   
+}
+
+function getContacto() {
+    
+    //get a reference to the select element
+    $select = $('#contacto');
+    //request the JSON data and parse into the select element
+    var s_id = ($("select[name='organizacion'] option:selected").attr('value'));
+    s_url = "/api/get_contacto/"+s_id+"/";
+    
+    $.ajax({
+      url: s_url,
+      dataType:'JSON',
+      success:function(data1){
+        //clear the current content of the select
+        $select.html('');
+        //iterate over the data and append a select option
+        
+        $.each(data1, function(key, val){
+          $select.append('<option value="' + val.id + '">' + val.nombre_contacto + '</option>');
+        })
+      },
+      
+    });
+   
+}
+		
+		</script>
+				
+         
+		{% endblock contenido %}
+		
+
+		
+		

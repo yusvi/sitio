@@ -1,0 +1,374 @@
+
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+
+		{% block contenido %}
+
+
+		
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Configuracion</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Configuracion/tabs.html" %}
+				
+<style>
+div.cities {
+	font-family: sans-serif, Helvetica, Verdana;
+	font-size:100%;
+} 
+
+textarea {
+    resize: none;
+    width: 20em;
+    height: 6em;
+	margin-top: 5px;
+}
+
+input {
+    margin-top: 2px;
+}
+
+
+
+fieldset { 
+	padding-bottom:30px;
+	
+}
+
+
+table{
+    width:100%;
+}
+
+table#tab2{
+    width:100%;
+}
+
+
+table tr td:first-child { width: 10em; }
+
+input[type=text], select, textarea, input {
+    width: 100%;
+    padding: 1px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+  #section1 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+  #section2 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+
+  #boton.affix  {
+      bottom:0px;
+  }
+  
+  body {
+
+  }
+
+  #boton{
+ margin-right: 5px;
+ }
+  
+  
+    #nav11.affix  {
+      top: 40px;
+      width: 100%;
+	  color: white;
+  }
+
+.sections {display:none; 
+    padding-right: 30px;
+	  padding-left:30px;
+	  padding-bottom:50px;
+}
+.sections:target {display:block; }  
+
+
+
+
+  
+</style>
+
+
+<div class="navContainer">
+<nav class="navbar navbar-inverse" id="nav11" data-spy="affix" data-offset-top="197">
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#section1">Datos generales</a></li>
+          <li><a href="#section2">Licencia</a></li>
+
+
+        </ul>
+
+</nav>  
+</div>
+
+				
+	<div class="cities">
+        <form action="." method="post" id="form">
+            {% csrf_token %}
+			<!--
+			 <button id="boton" type="submit" value="submit" class="submit" id="validate" data-spy="affix" data-offset-top="197"  /> </button>
+			-->
+
+
+			
+            <div id="section1"  class="sections" >
+			
+			<h2>{% if form.instance.id %}
+			 <a href="/mostrar_Licencia" id="boton2" class="save btn btn-info btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197">
+			 <span class="glyphicon glyphicon-search"></span> Licencia</a>
+			 
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>			 
+			 
+			 
+			Editar datos generales de Licencia
+			<h3>EC {{form.instance.id}}</h3>
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+		
+			{% else %}
+			
+			 <a href="/mostrar_Licencia" id="boton2" class="save btn btn-info btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197">
+			 <span class="glyphicon glyphicon-search"></span> Licencia</a>				
+			
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197">
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>		 
+			 
+			 
+			Nuevos datos generales de Licencia{% endif %}</h2> 
+
+						<button type="button" class="save btn btn-primary btn-xs" data-toggle="modal" data-target="#remoteModal4" ><span class="glyphicon glyphicon-plus"> Contacto </span></button>  
+						 
+						<!-- Modal -->  
+						<div class="modal fade" id="remoteModal4" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true" data-remote="{% url 'add_contacto' %}"  >
+						<div class="modal-dialog modal-sl">
+						<div class="modal-content"></div>
+						</div>
+						</div><!-- /.modal -->  					
+
+					<table>
+					
+					{% for field in form %}
+					<tr>
+					<td>{{field.label_tag}}</td><td> {{field}}</td>
+					</tr>
+					{% endfor %}
+					
+					</table>
+			
+			
+			</div>
+			
+		
+            <div id="section2"  class="sections">
+	
+			<h2>{% if form.instance.id %}
+			
+			 <a href="/mostrar_Licencia" id="boton2" class="save btn btn-info btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197">
+			 <span class="glyphicon glyphicon-search"></span> Licencia</a>			
+			
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>			 
+			 
+			Editar Licencia
+			<h3>EC {{form.instance.id}}</h3>
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+		
+			{% else %}
+			
+			 <a href="/mostrar_Licencia" id="boton2" class="save btn btn-info btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197">
+			 <span class="glyphicon glyphicon-search"></span> Licencia</a>			
+			
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Nueva Licencia{% endif %}</h2> 	
+	
+                {{ licencia_form.management_form }}
+                {{ licencia_form.non_form_errors }}
+                {% for form in licencia_form %}
+					{{form.id}}
+					
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+
+
+				
+                {% endfor %}
+            </div>
+
+
+   
+		
+		</form>
+		
+	</div>
+
+
+	</div>
+
+	
+    <script type="text/javascript">
+	
+
+	
+			
+$(document).ready(function(){
+
+
+
+$("#id_nombre_ec").val($("#id_nombre_ec option:eq(11)").val());
+
+
+	$('#fsPeticion select').change(function(){
+			var a = $('#fsPeticion').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsProductos").prop("disabled", true);
+			}
+			else{
+				$("#fsProductos").prop("disabled", false);
+			}
+			
+	});
+
+	$('#fsProductos input').change(function(){
+			var a = $('#fsProductos').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsAnalista").prop("disabled", true);
+				$("#fsEntrega").prop("disabled", true);
+				}
+			else{
+				$("#fsAnalista").prop("disabled", false);
+				$("#fsEntrega").prop("disabled", false);
+				
+			}
+			
+	});
+	
+	$('#fsAnalista input').change(function(){
+			var a = $('#fsAnalista').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsAcuerdo").prop("disabled", true);
+			}
+			else{
+				$("#fsAcuerdo").prop("disabled", false);
+			}
+			
+	});	
+	
+	$('#fsAcuerdo select').change(function(){
+			var a = $('#fsAcuerdo').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsSeguimiento").prop("disabled", true);
+			}
+			else{
+				$("#fsSeguimiento").prop("disabled", false);
+			}
+			
+	});	
+
+	$('#fsSeguimiento textarea').change(function(){
+			var a = $('#fsSeguimiento').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsCierre").prop("disabled", true);
+			}
+			else{
+				$("#fsCierre").prop("disabled", false);
+			}
+			
+	});	
+
+	$('#fsCierre input').change(function(){
+			var a = $('#fsCierre').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsEntrega").prop("disabled", true);
+			}
+			else{
+				$("#fsEntrega").prop("disabled", false);
+			}
+			
+	});		
+	
+})	
+	
+if ($('#fsPeticion').find('input[type=text],textarea,select').filter(':visible:last').val()!=0) {
+   $("#fsPeticion").prop("disabled", false);
+   $("#fsProductos").prop("disabled", false);	
+   $("#fsEntrega").prop("disabled", false);
+}
+	
+	
+if ($('#fsProductos').find('input[type=text],textarea,select').filter(':visible:last').val()!=0) {
+   $("#fsProductos").prop("disabled", false);
+   $("#fsAnalista").prop("disabled", false);
+
+}
+	
+if ($('#fsAnalista').find('input[type=text],textarea,select').filter(':visible:last').val()!=0) {
+   $("#fsAnalista").prop("disabled", false);
+   $("#fsAcuerdo").prop("disabled", false);
+}
+		
+if ($('#fsAcuerdo').find('input[type=text],textarea,select').filter(':visible:last').val()!=0) {
+   $("#fsAcuerdo").prop("disabled", false);
+   $("#fsSeguimiento").prop("disabled", false);
+}
+		
+if ($('#fsSeguimiento').find('input[type=text],textarea,select').filter(':visible:first').val()!=0) {
+   $("#fsSeguimiento").prop("disabled", false);
+   $("#fsCierre").prop("disabled", false);
+}
+		
+if ($('#fsCierre').find('input[type=text],textarea,select').filter(':visible:first').val()!=0) {
+   $("#fsCierre").prop("disabled", false);
+   $("#fsEntrega").prop("disabled", false);
+}
+		
+//if ($('#fsEntrega').find('input[type=text],textarea,select').filter(':visible:first').val()!=0) {
+  // $("#fsEntrega").prop("disabled", false);
+//}
+
+
+		
+	
+$( "#form" ).submit(function( event ) {
+	$("#fsProductos").prop("disabled", false);
+    $("#fsAnalista").prop("disabled", false);
+	$("#fsAcuerdo").prop("disabled", false);
+	$("#fsSeguimiento").prop("disabled", false);
+	$("#fsCierre").prop("disabled", false);
+	$("#fsEntrega").prop("disabled", false);
+});  
+
+
+
+
+			
+	
+    </script>
+
+
+	{% endblock contenido %}

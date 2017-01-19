@@ -1,0 +1,187 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+			
+		
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Proveedores</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Proveedores/tabs.html" %}
+			
+			
+			
+<style>
+div.cities {
+	font-family: sans-serif, Helvetica, Verdana;
+	font-size:100%;
+} 
+
+textarea {
+    resize: none;
+    width: 20em;
+    height: 6em;
+	margin-top: 5px;
+}
+
+input {
+    margin-top: 2px;
+}
+
+
+
+fieldset { 
+	padding-bottom:30px;
+	
+}
+
+
+  #boton.affix  {
+      bottom:0px;
+  }
+  
+    #boton2.affix  {
+      bottom:0px;
+	  margin-left: 90px;
+	  
+  }
+  
+    #boton{
+ margin-right: 5px;
+ }
+
+
+table{
+    width:100%;
+}
+
+table#tab2{
+    width:100%;
+}
+
+
+#encuesta tr td:first-child { width: 8em; }
+
+input[type=text], select, textarea, input {
+    width: 100%;
+    padding: 1px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+  #section1 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+  #section2 {padding-top:10px;height: 100%;color: black; background-color: #F8F8FF;}
+
+  #boton.affix  {
+      bottom:0px;
+  }
+  
+  body {
+
+  }
+
+
+    #nav11.affix  {
+      top: 40px;
+      width: 100%;
+	  color: white;
+  }
+
+.sections {display:none; 
+    padding-right: 30px;
+	  padding-left:30px;
+	  padding-bottom:50px;
+}
+.sections:target {display:block; }  
+
+
+
+
+  
+</style>		
+			
+		
+<div class="navContainer">
+<nav class="navbar navbar-inverse" id="nav11" data-spy="affix" data-offset-top="197">
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#section1">Evaluacion</a></li>
+
+
+
+        </ul>
+
+</nav>  
+</div>		
+						
+			
+			<div class="cities">
+
+			
+			<div id="section1"  class="sections" >
+			
+				  <form method="POST">
+				  
+				  {% csrf_token %}
+				  
+
+				<h2>
+				
+			 <a href="/mostrar_Evaluacion_proveedor" id="boton2" class="save btn btn-info btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197">
+			 <span class="glyphicon glyphicon-search"></span> Evaluacion</a>				
+				
+				 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+				 <span class="glyphicon glyphicon-ok"></span> Submit</button>					
+				
+				Evaluacion {{encuestado.id}}
+				 </h2>	
+
+				 
+
+				<h4>
+				  <table id="encuesta">
+				  <tr><td>Proceso: </td><td>{{ encuestado.proceso }}</td></tr>
+				  <tr><td>Proveedor: </td><td>{{ encuestado.proveedor}}  </td></tr> 
+				  <tr><td>Registro: </td><td>{{ encuestado.fecha_registro }} </td></tr> 
+				  
+				  <tr><td>Incidentes:  </td><td>{{ encuestado.total_incidentes }} </td></tr> 
+				  <tr><td>Evaluacion:  </td><td>{{ encuestado.estado }} </td></tr> 
+				  <tr><td>Calificacion:  </td><td>{{ encuestado.calificacion }} </td></tr> 
+				  <tr><td>Desempeno:  </td><td>{{ encuestado.estado2 }} </td></tr> 
+				  </table>
+				</h4>				
+				  
+				  
+				  
+					{{ formset.management_form }}
+					<table>
+					  {% for form in formset.forms %}
+						<tr><td>{{ form.instance.pregunta }} </td> <td> {{ form}}</td> </tr>
+						
+					  {% endfor %}
+					</table>				
+				
+				
+  
+				  </form>
+			</div>  
+
+		</div>	
+
+ <br><br><br><br><br><br><br>	
+         
+		{% endblock contenido %}
+		
+

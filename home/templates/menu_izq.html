@@ -1,0 +1,179 @@
+
+{% load static %}
+
+<style>
+
+
+.sidebar-search {
+  display:block;
+  height:120px;
+}
+
+#logo{
+	height:90px;
+}
+
+</style>
+
+<nav class="navbar navbar" data-spy="affix" data-offset-top="-1">
+
+
+
+<div class="navbar-default sidebar" role="navigation">
+                
+			
+
+
+
+				<div class="sidebar-nav navbar-collapse" id="#myNavbar">
+                    <ul class="nav" id="side-menu">
+					
+						<!-- 
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                           
+                        </li>
+						Buscar-->
+						
+						
+						
+<li class="sidebar-search">
+
+        <img id="logo" src="{% static "media/excel_img.png" %}" align="center"/>
+
+
+                           
+</li>
+						
+
+						
+                        <li class="active">
+                            
+							<!--<a href="/"><i class="fa fa-home fa-fw"></i> Resumen</a>-->
+							<a href="/informes_procesos"><i class="fa fa-home fa-fw"></i> Informes</a>
+                        </li>
+						
+						 <!-- 
+                        <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i> Planificacion<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="auditoria_interna.html">Auditoria externa</a>
+                                </li>
+                                <li>
+                                    <a href="auditoria_externa.html">Auditoria interna</a>
+                                </li>
+								<li>
+                                    <a href="documentos_registros.html">Documentos y registros</a>
+                                </li>
+								<li>
+                                    <a href="recurso.html">Gestion del recurso</a>
+                                </li>
+								<li>
+                                    <a href="gobernanza.html">Gobernanza de procesos operados por terceros</a>
+                                </li>
+								<li>
+                                    <a href="mejora.html">Mejora continua</a>
+                                </li>
+								<li>
+                                    <a href="direccion.html">Revision de direccion</a>
+                                </li>
+                            </ul>
+                            
+                        </li>
+						
+						Proceso Planificacion-->
+						
+						
+						<!--
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Procesos de Provision<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+                                 
+								<li>
+                                    <a href="continuidad_disponibilidad.html">Continuidad y disponibilidad del servicio</a>
+                                </li>
+								Proceso Continuidad y Disponibilidad
+
+								<li>
+                                    <a href="/mostrar_Resumen_seguridad">Gestion de seguridad</a>
+                                </li>
+
+                            </ul>
+                        </li>
+						-->
+                        <li class="active">
+                            <a href="#"><i class="fa fa-group fa-fw"></i> Procesos de Relacion<span class="fa arrow"></span></a>
+							 <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/mostrar_Resumen_clientes">Gestion de clientes</a>
+                                </li>
+                                <li>
+                                    <a href="/mostrar_Resumen_proveedores">Gestion de proveedores</a>
+                                </li>
+                            </ul>
+                        </li>
+						
+                        <li class="active">
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Procesos de Resolucion<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/mostrar_Resumen_peticiones">Gestion de incidentes y provisiones del servicio</a>
+                                </li>
+                                <li>
+                                    <a href="/mostrar_Resumen_problemas">Gestion de problemas</a>
+								</li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Procesos de Control<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/mostrar_Resumen_configuracion">Gestion de configuracion </a>
+                                </li>
+                                <li>
+                                    <a href="/mostrar_Resumen_cambios">Gestion del cambio </a>
+                                </li>								
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+
+
+<!-- /.navbar-static-side -->
+</div>
+
+</nav>
+
+
+<!--
+<script type="text/javascript">
+
+$(document).ready(function () {
+    var action = window.location.pathname.split('/')[1];
+
+    // If there's no action, highlight the first menu item
+    if (action == "") {
+        $('ul.nav li:first').addClass('active');
+    } else {
+        // Highlight current menu
+        $('ul.nav a[href="/' + action + '"]').parent().addClass('active');
+
+        // Highlight parent menu item
+        $('ul.nav a[href="/' + action + '"]').parents('li').addClass('active');
+    }
+});
+
+</script> -->
+

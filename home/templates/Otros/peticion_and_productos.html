@@ -1,0 +1,396 @@
+
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+
+		{% block contenido %}
+
+
+		
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Incidentes y Provisiones del servicio</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Peticiones/tabs.html" %}
+				
+<style>
+div.cities {
+	font-family: sans-serif, Helvetica, Verdana;
+	font-size:100%;
+} 
+
+textarea {
+    resize: none;
+    width: 20em;
+    height: 6em;
+	margin-top: 5px;
+}
+
+input {
+    margin-top: 2px;
+}
+
+
+
+fieldset { 
+	padding-bottom:30px;
+	
+}
+
+
+table{
+    width:100%;
+}
+
+table#tab2{
+    width:100%;
+}
+
+
+table tr td:first-child { width: 10em; }
+
+input[type=text], select, textarea, input {
+    width: 100%;
+    padding: 1px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+
+  #boton.affix  {
+      bottom:0px;
+  }
+  
+
+  
+
+
+</style>
+
+
+				
+	<div class="cities">
+        <form action="." method="post" id="form">
+            {% csrf_token %}
+			<!--
+			 <button id="boton" type="submit" value="submit" class="submit" id="validate" data-spy="affix" data-offset-top="197"  /> </button>
+			-->
+
+			<h2>{% if form.instance.id %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Editar Peticion {{form.instance.id}}
+			
+			<!--
+			<a href="/crear_Peticion"><button class="save btn btn-success btn-m" style="float: right;"><span class="glyphicon glyphicon-plus"></span> Peticion</button></a>  
+			-->
+
+			{% else %}
+			 <button id="boton" type="submit" value="submit" class="save btn btn-success btn-m btn-m" style="float: right;" data-spy="affix" data-offset-top="197" >
+			 <span class="glyphicon glyphicon-ok"></span> Submit</button>
+			Nueva Peticion{% endif %}</h2> 
+			
+            <fieldset id="fsPeticion">
+
+                <legend></legend>
+						
+
+						<button type="button" class="save btn btn-primary btn-xs" data-toggle="modal" data-target="#remoteModal4" ><span class="glyphicon glyphicon-plus"> Contacto </span></button>  
+						 
+						<!-- Modal -->  
+						<div class="modal fade" id="remoteModal4" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true" data-remote="{% url 'add_contacto' %}"  >
+						<div class="modal-dialog modal-sl">
+						<div class="modal-content"></div>
+						</div>
+						</div><!-- /.modal -->  					
+						
+						
+						
+			
+					<table>
+					
+					{% for field in form %}
+					<tr>
+					<td>{{field.label_tag}}</td><td> {{field}}</td>
+					</tr>
+					{% endfor %}
+					
+					</table>
+			</fieldset>
+
+            <fieldset id="fsProductos" disabled="true">
+                <legend>Agregar Productos</legend>
+                {{ producto_form.management_form }}
+                {{ producto_form.non_form_errors }}
+                {% for form in producto_form %}
+					{{form.id}}
+                    <div class="inline {{ producto_form.prefix }}">
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+                    </div>
+
+				
+                {% endfor %}
+            </fieldset>
+
+            <fieldset id="fsAnalista" disabled="true">
+                <legend>Asignar Analista</legend>
+                {{ analista_form.management_form }}
+                {{ analista_form.non_form_errors }}
+                {% for form in analista_form %}
+                    {{ form.id }}
+                    
+					<table>
+					<tr>
+
+					<td>{{form}}</td>
+
+					</tr>
+					</table>
+                    
+                {% endfor %}
+            </fieldset>
+
+            <fieldset id="fsAcuerdo" disabled="true">
+                <legend>Asignar Acuerdo</legend>
+                {{ acuerdo_form.management_form }}
+                {{ acuerdo_form.non_form_errors }}
+                {% for form in acuerdo_form %}
+					{{form.id}}
+					<div class="inline {{ acuerdo_form.prefix }}">
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+					</div>
+                {% endfor %}
+            </fieldset>
+
+            <fieldset id="fsSeguimiento" disabled="true">
+                <legend>Agregar Seguimiento</legend>
+                {{ seguimiento_form.management_form }}
+                {{ seguimiento_form.non_form_errors }}
+                {% for form in seguimiento_form %}
+                    {{ form.id }}
+                    <div class="inline {{ seguimiento_form.prefix }}">
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+                    </div>
+                {% endfor %}
+            </fieldset>
+			
+            <fieldset id="fsCierre" disabled="true">
+                <legend>Crear Cierre</legend>
+                {{ cierre_form.management_form }}
+                {{ cierre_form.non_form_errors }}
+                {% for form in cierre_form %}
+                    {{ form.id }}
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+                {% endfor %}
+            </fieldset>
+			
+            <fieldset id="fsEntrega" disabled="true">
+                <legend>Agregar Entrega</legend>
+                {{ entrega_form.management_form }}
+                {{ entrega_form.non_form_errors }}
+                {% for form in entrega_form %}
+                    {{ form.id }}
+                    <div class="inline {{ entrega_form.prefix }}">
+					<table>
+					<tr>
+					<td>{{form}}</td>
+					</tr>
+					</table>
+                    </div>
+                {% endfor %}
+            </fieldset>
+			
+           
+		
+		</form>
+		
+	</div>
+
+
+
+	
+    <script type="text/javascript">
+        $(function() {
+            $(".inline.{{ producto_form.prefix }}").formset({
+                prefix: "{{ producto_form.prefix }}",
+            })
+            $(".inline.{{ analista_form.prefix }}").formset({
+                prefix: "{{ analista_form.prefix }}",
+            })
+            $(".inline.{{ acuerdo_form.prefix }}").formset({
+                prefix: "{{ acuerdo_form.prefix }}",
+            })
+            $(".inline.{{ seguimiento_form.prefix }}").formset({
+                prefix: "{{ seguimientoform.prefix }}",
+            })
+            $(".inline.{{ cierre_form.prefix }}").formset({
+                prefix: "{{ cierre_form.prefix }}",
+            })
+            $(".inline.{{ entrega_form.prefix }}").formset({
+                prefix: "{{ entrega_form.prefix }}",
+            })
+        })
+			
+	
+			
+$(document).ready(function(){
+
+
+	$('#fsPeticion select').change(function(){
+			var a = $('#fsPeticion').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsProductos").prop("disabled", true);
+			}
+			else{
+				$("#fsProductos").prop("disabled", false);
+			}
+			
+	});
+
+	$('#fsProductos input').change(function(){
+			var a = $('#fsProductos').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsAnalista").prop("disabled", true);
+				$("#fsEntrega").prop("disabled", true);
+				}
+			else{
+				$("#fsAnalista").prop("disabled", false);
+				$("#fsEntrega").prop("disabled", false);
+				
+			}
+			
+	});
+	
+	$('#fsAnalista input').change(function(){
+			var a = $('#fsAnalista').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsAcuerdo").prop("disabled", true);
+			}
+			else{
+				$("#fsAcuerdo").prop("disabled", false);
+			}
+			
+	});	
+	
+	$('#fsAcuerdo select').change(function(){
+			var a = $('#fsAcuerdo').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsSeguimiento").prop("disabled", true);
+			}
+			else{
+				$("#fsSeguimiento").prop("disabled", false);
+			}
+			
+	});	
+
+	$('#fsSeguimiento textarea').change(function(){
+			var a = $('#fsSeguimiento').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsCierre").prop("disabled", true);
+			}
+			else{
+				$("#fsCierre").prop("disabled", false);
+			}
+			
+	});	
+
+	$('#fsCierre input').change(function(){
+			var a = $('#fsCierre').find('input[type=text],textarea,select').filter(':visible:last').val();
+			if(a==0){
+				$("#fsEntrega").prop("disabled", true);
+			}
+			else{
+				$("#fsEntrega").prop("disabled", false);
+			}
+			
+	});		
+	
+})	
+	
+if ($('#fsPeticion').find('input[type=text],textarea,select').filter(':visible:last').val()!=0) {
+   $("#fsPeticion").prop("disabled", false);
+   $("#fsProductos").prop("disabled", false);	
+   $("#fsEntrega").prop("disabled", false);
+}
+	
+	
+if ($('#fsProductos').find('input[type=text],textarea,select').filter(':visible:last').val()!=0) {
+   $("#fsProductos").prop("disabled", false);
+   $("#fsAnalista").prop("disabled", false);
+
+}
+	
+if ($('#fsAnalista').find('input[type=text],textarea,select').filter(':visible:last').val()!=0) {
+   $("#fsAnalista").prop("disabled", false);
+   $("#fsAcuerdo").prop("disabled", false);
+}
+		
+if ($('#fsAcuerdo').find('input[type=text],textarea,select').filter(':visible:last').val()!=0) {
+   $("#fsAcuerdo").prop("disabled", false);
+   $("#fsSeguimiento").prop("disabled", false);
+}
+		
+if ($('#fsSeguimiento').find('input[type=text],textarea,select').filter(':visible:first').val()!=0) {
+   $("#fsSeguimiento").prop("disabled", false);
+   $("#fsCierre").prop("disabled", false);
+}
+		
+if ($('#fsCierre').find('input[type=text],textarea,select').filter(':visible:first').val()!=0) {
+   $("#fsCierre").prop("disabled", false);
+   $("#fsEntrega").prop("disabled", false);
+}
+		
+//if ($('#fsEntrega').find('input[type=text],textarea,select').filter(':visible:first').val()!=0) {
+  // $("#fsEntrega").prop("disabled", false);
+//}
+
+
+		
+	
+$( "#form" ).submit(function( event ) {
+	$("#fsProductos").prop("disabled", false);
+    $("#fsAnalista").prop("disabled", false);
+	$("#fsAcuerdo").prop("disabled", false);
+	$("#fsSeguimiento").prop("disabled", false);
+	$("#fsCierre").prop("disabled", false);
+	$("#fsEntrega").prop("disabled", false);
+});  
+
+
+
+
+			
+	
+    </script>
+
+
+	{% endblock contenido %}

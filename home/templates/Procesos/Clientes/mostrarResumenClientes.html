@@ -1,0 +1,567 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+		
+		
+<style>
+.chart-legend li span{
+    display: inline-block;
+    width: 20px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+ul {
+list-style-type: none;
+}
+
+
+#myTable{
+	width:100%;
+}
+
+#js-legend, #js-legend2, #js-legend3{
+	padding-top: 10px;
+}
+
+
+#js-legend2{
+	width: 300px;
+}
+
+th {
+ white-space: nowrap;
+ font-size: 13px;
+}
+
+
+
+#chart, #chart2, #chart4, #chart5, #js-legend, #js-legend2, #js-legend3{
+
+    max-width: 100%;
+    height: auto;
+
+} 
+
+
+#chart3, #chart6, #js-legend, #js-legend2, #js-legend3{
+
+    max-height: 100%;
+    width: auto;
+
+} 
+
+
+</style>		
+		
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Clientes</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Clientes/tabs.html" %}
+			
+				<h3>Ver Resumen de Clientes</h3><br>
+				
+
+				
+				
+            <div class="row">			
+				<div class="col-lg-8 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Encuesta por Cliente</b></center>
+                        </div>
+						
+						<div class="panel-body">
+				
+				<div class="col-lg-12">
+					
+				<center>
+				<!--<label for = "chart">Encuesta por Cliente<br>-->
+				<canvas id="chart" width="900" height="400"></canvas>
+				<!--</label>-->	
+				</center>					
+					
+					
+				</div>				
+				
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+					
+
+
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Reclamacion por Cliente</b></center>
+                        </div>
+						
+						<div class="panel-body">				
+				<div class="col-lg-12">
+				
+				<center>
+				<!--<label for = "chart4">Reclamacion por Cliente<br>-->
+				<canvas id="chart4" width="900" height="400"></canvas>
+				<!--</label>-->	
+				</center>
+
+				</div>
+				
+				
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->	
+
+
+				
+					
+					
+					
+				</div>
+
+
+				<div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                              <center><b>Encuesta por Calificacion</b></center>
+                        </div>
+						
+						<div class="panel-body">
+				
+
+				<div class="col-lg-12">
+				<center>
+				
+				<!--<label for = "chart3">Encuesta por Calificacion<br><br><br>-->
+				<canvas id="chart3" width="250" height="285"></canvas>
+				<!--</label>-->
+				
+				</center>
+				<div id="js-legend" class="chart-legend"></div>
+				</div>	
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+					
+					
+					
+				
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Reclamacion por Servicio</b></center>
+                        </div>
+						
+						<div class="panel-body">					
+				<div class="col-lg-12">				
+				<center>
+				
+				<!--<label for = "chart6">Reclamacion por Servicio<br><br><br>-->
+				<canvas id="chart6" width="250" height="285"></canvas>
+				<!--</label>-->
+				
+				</center>
+				<div id="js-legend2" class="chart-legend"></div>
+				</div>	
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+									
+					
+					
+					
+					
+				</div>
+
+			</div>	
+							
+
+							
+<!--							
+<div class="row">
+
+
+
+
+			<div class="col-lg-12 col-md-6">		
+					
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Encuestas por Fecha de registro</b></center>
+                        </div>
+						
+						<div class="panel-body">			
+				<div class="col-lg-12">
+				
+					<center>
+					<label for = "chart2">Encuesta por Registro<br>
+					<canvas id="chart2" width="1200" height="400"></canvas>
+					</label>
+					</center>
+					
+				</div>
+                        </div>
+
+                    </div>
+				
+					
+			</div>
+			<div class="col-lg-12 col-md-6">			
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center><b>Reclamaciones por Fecha de registro</b></center>
+                        </div>
+						
+						<div class="panel-body">			
+				<div class="col-lg-12">
+				
+					<center>
+					<label for = "chart2">Encuesta por Registro<br>
+					<canvas id="chart5" width="1200" height="400"></canvas>
+					</label>
+					</center>
+					
+				</div>
+                        </div>
+
+                    </div>
+
+							
+			</div>
+
+</div>			
+
+
+
+
+</div>
+
+-->
+		 
+ <script>
+
+   var pieData = [
+            {% for item3, label3 in set2 %}
+                {
+                    value: {{item3.total}},
+                    label: "{{label3.nombre_servicio}}",
+                    color : getRandomColor()
+
+					
+                },
+                {% endfor %}
+ 
+ 
+         ];
+		 
+
+var options = {
+    segmentShowStroke: false,
+    animateRotate: true,
+    animateScale: false,
+    percentageInnerCutout: 50,
+    tooltipTemplate: "<%= label %>: <%= value %>"
+	}
+	
+ 
+   // get bar chart canvas
+   var ctx = document.getElementById("chart6").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw pie chart
+   var myChart = new Chart(ctx).Doughnut(pieData);
+   
+   document.getElementById("js-legend2").innerHTML = myChart.generateLegend();
+ 
+ 
+ 
+function getRandomColor() {
+
+    var r = (Math.round(Math.random()* 127) + 127).toString(16);
+    var g = (Math.round(Math.random()* 127) + 127).toString(16);
+    var b = (Math.round(Math.random()* 127) + 127).toString(16);
+    return '#' + r + g + b;
+
+} 
+ 
+</script>
+
+			
+
+		
+	
+<script>
+ 
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels5 %}
+                  "{{item.mes}} {{item.ano}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            bezierCurve : false,
+            data : [{% for item in values5 %}
+                      {{item.total}},
+                    {% endfor %}]
+      }]
+   }
+ 
+    Chart.defaults.global.animationSteps = 50;
+    Chart.defaults.global.tooltipYPadding = 16;
+    Chart.defaults.global.tooltipCornerRadius = 0;
+    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+    Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+    Chart.defaults.global.animationEasing = "easeOutBounce";
+    Chart.defaults.global.responsive = false;
+    Chart.defaults.global.scaleLineColor = "black";
+    Chart.defaults.global.scaleFontSize = 16;
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart5").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   var LineChartDemo = new Chart(mychart).Line(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true,
+        bezierCurve: false,
+ 
+   });
+ 
+ 
+</script>			
+		
+		
+		
+		
+<script>
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels4 %}
+                  "{{item.organizacion}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in values4 %}
+                      {{item.total}},
+                    {% endfor %}]
+      }
+      ]
+   }
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart4").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   new Chart(mychart).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+   });
+ 
+</script>			
+		
+
+
+
+ <script>
+
+   var pieData = [
+            {% for item3, label3 in set %}
+			
+			
+			
+                {
+				
+					value: {{item3.total}},
+					
+					label:
+					{% if label3.estado %}
+					"{{label3.estado}}",
+					{% else %}
+					"Sin realizar",
+					{% endif %}
+
+			
+					
+                    color : getRandomColor()
+
+					
+                },
+                {% endfor %}
+ 
+ 
+         ];
+		 
+
+var options = {
+    segmentShowStroke: false,
+    animateRotate: true,
+    animateScale: false,
+    percentageInnerCutout: 50,
+    tooltipTemplate: "<%= label %>: <%= value %>"
+	}
+	
+ 
+   // get bar chart canvas
+   var ctx = document.getElementById("chart3").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw pie chart
+   var myChart = new Chart(ctx).Pie(pieData);
+   
+   document.getElementById("js-legend").innerHTML = myChart.generateLegend();
+ 
+ 
+ 
+function getRandomColor() {
+
+    var r = (Math.round(Math.random()* 127) + 127).toString(16);
+    var g = (Math.round(Math.random()* 127) + 127).toString(16);
+    var b = (Math.round(Math.random()* 127) + 127).toString(16);
+    return '#' + r + g + b;
+
+} 
+ 
+</script>
+
+		
+	
+	
+<script>
+ 
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels2 %}
+                  "{{item.ano}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            bezierCurve : false,
+            data : [{% for item in values2 %}
+                      {{item.total}},
+                    {% endfor %}]
+      }]
+   }
+ 
+    Chart.defaults.global.animationSteps = 50;
+    Chart.defaults.global.tooltipYPadding = 16;
+    Chart.defaults.global.tooltipCornerRadius = 0;
+    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+    Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+    Chart.defaults.global.animationEasing = "easeOutBounce";
+    Chart.defaults.global.responsive = false;
+    Chart.defaults.global.scaleLineColor = "black";
+    Chart.defaults.global.scaleFontSize = 16;
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart2").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   var LineChartDemo = new Chart(mychart).Line(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true,
+        bezierCurve: false,
+ 
+   });
+ 
+ 
+</script>	
+
+	
+			
+<script>
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels %}
+                  "{{item.organizacion}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in values %}
+                      {{item.Total}},
+                    {% endfor %}]
+      }
+      ]
+   }
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   new Chart(mychart).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+   });
+ 
+</script>	
+		 		 
+		 
+		 
+		{% endblock contenido %}
+			

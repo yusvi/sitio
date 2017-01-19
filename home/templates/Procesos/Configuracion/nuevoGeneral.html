@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+		{% block contenido %}
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Configuracion</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Configuracion/tabs.html" %}
+			
+
+				<h3>Nuevo Dato General</h3><br>
+				  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+						{{ form.as_p }}
+						
+						<button type="submit" class="save btn btn-default">Save</button>
+						<a href="/mostrar_Dato_General" class="btn btn-default" role="button">Cancel</a>
+					
+					</form>
+				<br><br>
+								
+         
+		{% endblock contenido %}

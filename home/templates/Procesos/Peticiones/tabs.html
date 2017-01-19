@@ -1,0 +1,107 @@
+
+  
+  <style>
+  
+  #nav1.affix  {
+      top: 0px;
+      width: 100%;
+	  z-index:150;
+  }
+
+  
+  #nav1 {
+    background-color: #e3f2fd;;
+    border-color: #E7E7E7;
+} 
+
+  </style>
+  
+
+
+ <ul id="nav1" class="nav nav-tabs" data-spy="affix" data-offset-top="197">
+	<li role="presentation" class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+		Informes <span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="/mostrar_Resumen_peticiones">Informes</a></li>
+			</ul>
+	</li>
+
+	<li role="presentation" class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+		Informacion <span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li role="presentation"><a href="/mostrar_Servicio">Servicio</a></li>
+				<li role="presentation"><a href="/mostrar_Subcategoria">Subcategoria</a></li>
+				<li role="presentation"><a href="/mostrar_Producto">Producto</a></li>
+			</ul>
+	</li>	
+
+	
+					  <li role="presentation" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Peticion <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li role="presentation"><a href="/crear_Peticion/#section1">Nuevo</a></li>
+							<li role="presentation"><a href="/mostrar_Peticion">Mostrar todos</a></li>
+						</ul>
+					  </li>
+
+
+</ul>
+
+
+
+<div class="tab-content" >
+
+	  
+
+	  <div id="menu2" class="tab-pane fade">
+
+				<ul class="nav nav-pills">
+
+					  <li role="presentation" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Crear Peticion <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li role="presentation"><a href="/crear_Peticion">Nuevo</a></li>
+							<li role="presentation"><a href="/mostrar_Peticion">Mostrar</a></li>
+						</ul>
+					  </li>
+
+				</ul>  
+	  
+	  </div>
+
+	  
+
+  
+</div>
+
+
+
+<script type="text/javascript">
+
+$(function() { 
+    // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line
+    $('a[data-toggle="tab"] ').on('shown.bs.tab', function (e) {
+        // save the latest tab; use cookies if you like 'em better:
+        localStorage.setItem('lastTab', $(this).attr('href'));
+    });
+
+    // go to the latest tab, if it exists:
+    var lastTab = localStorage.getItem('lastTab');
+    if (lastTab) {
+        $('[href="' + lastTab + '"]').tab('show');
+    }
+});
+
+
+</script>
+ 
+  
+  

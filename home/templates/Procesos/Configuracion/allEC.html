@@ -1,0 +1,200 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+		{% block contenido %}
+
+		     <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Gestion de Configuracion</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+             </div>
+			 
+			 
+            {% include "Procesos/Configuracion/tabs.html" %}
+			
+			
+<br>
+
+
+
+
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion">
+        Elementos de configuracion</a>
+      </h4>
+    </div>
+	<div id="collapse2" class="panel-collapse collapse in">
+	
+	<ul class="nav nav-tabs">
+    <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/impresora.ico" %}"  align="center"/>
+	<br><center>Impresora</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Impresora/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Impresora">Mostrar</a></li>
+    </ul>
+  </li>  
+
+    <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/granja.png" %}"  align="center"/>
+	<br><center>Granja</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Granja/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Granja">Mostrar</a></li>
+    </ul>
+  </li>  
+
+    <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/licencia.png" %}"  align="center"/>
+	<br><center>Licencia</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Licencia/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Licencia">Mostrar</a></li>
+    </ul>
+  </li>  
+ 
+    <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/maqvirtual.png" %}"  align="center"/>
+	<br><center>Maquina virtual</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Maquina_virtual/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Maquina_virtual">Mostrar</a></li>
+    </ul>
+  </li>   
+ 
+     <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/vlan.png" %}"  align="center"/>
+	<br><center>Vlan</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Vlan/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Vlan">Mostrar</a></li>
+    </ul>
+  </li>   
+ 
+      <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/contacto.png" %}"  align="center"/>
+	<br><center>Contacto</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Contacto/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Contacto">Mostrar</a></li>
+    </ul>
+  </li>   
+ 
+      <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/pc.png" %}"  align="center"/>
+	<br><center>PC</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_PC_Laptop/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_PC">Mostrar</a></li>
+    </ul>
+  </li>  
+
+      <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/instalacion.png" %}"  align="center"/>
+	<br><center>Instalacion</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Instalacion_software/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Instalacion">Mostrar</a></li>
+    </ul>
+  </li>     
+
+      <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/rack.png" %}"  align="center"/>
+	<br><center>Rack</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Rack/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Rack">Mostrar</a></li>
+    </ul>
+  </li> 
+
+      <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/servidor.png" %}"  align="center"/>
+	<br><center>Servidor</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Servidor/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Servidor">Mostrar</a></li>
+    </ul>
+  </li>  
+
+      <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/hypervisor.png" %}"  align="center"/>
+	<br><center>Hypervisor</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Hypervisor/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Hypervisor">Mostrar</a></li>
+    </ul>
+  </li>   
+
+      <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/telefono.png" %}"  align="center"/>
+	<br><center>Telefono</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Telefono_Celular/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Telefono">Mostrar</a></li>
+    </ul>
+  </li> 
+
+      <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/red2.png" %}"  align="center"/>
+	<br><center>Dispositivo de red</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Dispositivo_red/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Dispositivo_red">Mostrar</a></li>
+    </ul>
+  </li> 
+  
+      <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <img id="logo" src="{% static "media/interface.gif" %}"  align="center"/>
+	<br><center>Interfaz de red</center><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+		<li role="presentation"><a href="/crear_Interfaz_red/#section1">Nuevo</a></li>
+		<li role="presentation"><a href="/mostrar_Interfaz_red">Mostrar</a></li>
+    </ul>
+  </li> 
+  
+	</ul>
+	</div>
+	
+
+</div>	
+	
+				
+         
+		{% endblock contenido %}
+		
