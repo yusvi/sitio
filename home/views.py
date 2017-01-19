@@ -36,7 +36,7 @@ class indexView(TemplateView):
 
 
 
-def verResumenGeneral(request, template_name='index.html'):
+def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/index.html'):
 
 
         cursor3 = connection.cursor()
