@@ -3878,7 +3878,7 @@ def verResumenConfiguracion(request, template_name='Procesos/Configuracion/mostr
 
         #ec_obj2 = General_Configuracion.objects.all().values('nombre_ec').annotate(num=Count('nombre_ec')).order_by('num')
         cursor = connection.cursor()
-        cursor.execute('SELECT e.nombre_ec, g.nombre_ec_id, count(*) as num FROM home_general_configuracion g, home_EC e where g.nombre_ec_id = e.id group by g.nombre_ec_id')
+        cursor.execute('SELECT e.nombre_ec, g.nombre_ec_id, count(*) as num FROM home_general_configuracion g, home_ec e where g.nombre_ec_id = e.id group by g.nombre_ec_id')
 
         persons = cursor.fetchall() 
 
