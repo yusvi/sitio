@@ -4973,7 +4973,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor3 = connection.cursor()
-        cursor3.execute('SELECT cl.nombre_organizacion as organizacion from db_home.home_organizacion cl, db_home.home_encuestado pc where cl.id = pc.organizacion_id and pc.proceso_id=2 group by pc.organizacion_id;')
+        cursor3.execute('SELECT cl.nombre_organizacion as organizacion from home_organizacion cl, home_encuestado pc where cl.id = pc.organizacion_id and pc.proceso_id=2 group by pc.organizacion_id;')
                         
         persons3 = cursor3.fetchall() 
 
@@ -4989,7 +4989,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor4 = connection.cursor()
-        cursor4.execute('select count(organizacion_id) as Total from db_home.home_encuestado where proceso_id=2 group by organizacion_id;')
+        cursor4.execute('select count(organizacion_id) as Total from home_encuestado where proceso_id=2 group by organizacion_id;')
 
         persons4 = cursor4.fetchall() 
 
@@ -5007,7 +5007,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor5 = connection.cursor()
-        cursor5.execute('SELECT year(fecha_encuesta) as ano FROM db_home.home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
+        cursor5.execute('SELECT year(fecha_encuesta) as ano FROM home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
                         
         persons5 = cursor5.fetchall() 
 
@@ -5023,7 +5023,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor6 = connection.cursor()
-        cursor6.execute('SELECT COUNT(id) as total FROM db_home.home_encuestado where proceso_id=2  group BY year(fecha_encuesta);')
+        cursor6.execute('SELECT COUNT(id) as total FROM home_encuestado where proceso_id=2  group BY year(fecha_encuesta);')
         
         persons6 = cursor6.fetchall() 
 
@@ -5040,7 +5040,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor7 = connection.cursor()
-        cursor7.execute('SELECT estado from db_home.home_encuestado where proceso_id=2 group by estado;')
+        cursor7.execute('SELECT estado from home_encuestado where proceso_id=2 group by estado;')
                         
         persons7 = cursor7.fetchall() 
 
@@ -5056,7 +5056,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor8 = connection.cursor()
-        cursor8.execute('select count(estado) as total from db_home.home_encuestado where proceso_id=2 group by estado;')
+        cursor8.execute('select count(estado) as total from home_encuestado where proceso_id=2 group by estado;')
                         
         persons8 = cursor8.fetchall() 
 
@@ -5073,7 +5073,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor9 = connection.cursor()
-        cursor9.execute('SELECT cl.nombre_organizacion as organizacion from db_home.home_organizacion cl, db_home.home_reclamacion pc where cl.id = pc.organizacion_id group by pc.organizacion_id;')
+        cursor9.execute('SELECT cl.nombre_organizacion as organizacion from home_organizacion cl, home_reclamacion pc where cl.id = pc.organizacion_id group by pc.organizacion_id;')
                         
         persons9 = cursor9.fetchall() 
 
@@ -5089,7 +5089,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor10 = connection.cursor()
-        cursor10.execute('select count(organizacion_id) as total from db_home.home_reclamacion group by organizacion_id;')
+        cursor10.execute('select count(organizacion_id) as total from home_reclamacion group by organizacion_id;')
                         
         persons10 = cursor10.fetchall() 
 
@@ -5106,7 +5106,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor11 = connection.cursor()
-        cursor11.execute('SELECT monthname(fecha_registro) as mes, year(fecha_registro) as ano FROM db_home.home_reclamacion group by year(fecha_registro), month(fecha_registro);')
+        cursor11.execute('SELECT monthname(fecha_registro) as mes, year(fecha_registro) as ano FROM home_reclamacion group by year(fecha_registro), month(fecha_registro);')
 
         persons11 = cursor11.fetchall() 
 
@@ -5124,7 +5124,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('SELECT COUNT(id) as total FROM db_home.home_reclamacion group BY year(fecha_registro), month(fecha_registro);')
+        cursor12.execute('SELECT COUNT(id) as total FROM home_reclamacion group BY year(fecha_registro), month(fecha_registro);')
         
         persons12 = cursor12.fetchall() 
 
@@ -5140,7 +5140,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor13 = connection.cursor()
-        cursor13.execute('SELECT s.nombre_servicio from db_home.home_servicio s, db_home.home_reclamacion r where r.servicio_id=s.id group by r.id;')
+        cursor13.execute('SELECT s.nombre_servicio from home_servicio s, home_reclamacion r where r.servicio_id=s.id group by r.id;')
         persons13 = cursor13.fetchall() 
 
         x13 = cursor13.description
@@ -5156,7 +5156,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 
 
         cursor14 = connection.cursor()
-        cursor14.execute('SELECT count(r.id) as total from db_home.home_reclamacion r group by r.id; ')
+        cursor14.execute('SELECT count(r.id) as total from home_reclamacion r group by r.id; ')
         
         persons14 = cursor14.fetchall() 
 
@@ -5208,7 +5208,7 @@ def verResumenClientes(request, template_name='Procesos/Clientes/mostrarResumenC
 def verResumenSeguridad(request, template_name='Procesos/Seguridad/mostrarResumenSeguridad.html'):
 
         cursor = connection.cursor()
-        cursor.execute('SELECT e.encuestado_id, e.calificacion, o.nombre_organizacion, t.id, p.nombre_contacto, p.apellido_contacto from db_home.home_resultado_cuestionario e, db_home.home_organizacion o,  db_home.home_encuestado t, db_home.home_cliente_empleado p where t.id = e.encuestado_id and o.id=t.organizacion_id and t.contacto_id = p.id')
+        cursor.execute('SELECT e.encuestado_id, e.calificacion, o.nombre_organizacion, t.id, p.nombre_contacto, p.apellido_contacto from home_resultado_cuestionario e, home_organizacion o,  home_encuestado t, home_cliente_empleado p where t.id = e.encuestado_id and o.id=t.organizacion_id and t.contacto_id = p.id')
         persons = cursor.fetchall() 
 
         x = cursor.description
@@ -5225,7 +5225,7 @@ def verResumenSeguridad(request, template_name='Procesos/Seguridad/mostrarResume
         context_dict['lista']=resultsList
 
         cursor2 = connection.cursor()
-        cursor2.execute('SELECT a.id, (SELECT COUNT(*) FROM db_home.home_productos_peticion p WHERE p.peticion_id = a.id) as Productos, ap.fecha_asignacion, l.fecha_solucion, (SELECT COUNT(*) FROM db_home.home_seguimiento_peticion sp WHERE sp.peticion_id = a.id) as Seguimientos, (SELECT COUNT(*) FROM db_home.home_cierre_peticion cp WHERE cp.peticion_id = a.id) as Cierre, (SELECT COUNT(*) FROM db_home.home_entrega_peticion v WHERE v.peticion_id = a.id) as Entrega FROM db_home.home_peticion a, db_home.home_asignacion_peticion ap, db_home.home_acuerdo_sla l, db_home.home_cierre_peticion cp WHERE ap.peticion_id=a.id and l.peticion_id=a.id')
+        cursor2.execute('SELECT a.id, (SELECT COUNT(*) FROM home_productos_peticion p WHERE p.peticion_id = a.id) as Productos, ap.fecha_asignacion, l.fecha_solucion, (SELECT COUNT(*) FROM home_seguimiento_peticion sp WHERE sp.peticion_id = a.id) as Seguimientos, (SELECT COUNT(*) FROM home_cierre_peticion cp WHERE cp.peticion_id = a.id) as Cierre, (SELECT COUNT(*) FROM home_entrega_peticion v WHERE v.peticion_id = a.id) as Entrega FROM home_peticion a, home_asignacion_peticion ap, home_acuerdo_sla l, home_cierre_peticion cp WHERE ap.peticion_id=a.id and l.peticion_id=a.id')
         persons2 = cursor2.fetchall() 
 
         x2 = cursor2.description
