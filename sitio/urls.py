@@ -25,7 +25,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include('home.urls')),
-    url(r'^api/',include('api.urls')),
+    url(r'^api/',include('api.urls_2')),
     #url(r'', include('smart_selects.urls')),
 
     url(r'^chaining/', include('smart_selects.urls')),
