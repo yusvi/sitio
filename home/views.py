@@ -36,11 +36,11 @@ class indexView(TemplateView):
 
 
 
-def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/index.html'):
+def verResumenGeneral(request, template_name='index.html'):
 
 
         cursor3 = connection.cursor()
-        cursor3.execute('select count(organizacion_id) as Total from db_home.home_encuestado where proceso_id=2;')
+        cursor3.execute('select count(organizacion_id) as Total from home_encuestado where proceso_id=2;')
                         
         persons3 = cursor3.fetchall() 
 
@@ -56,7 +56,7 @@ def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/i
 
 
         cursor4 = connection.cursor()
-        cursor4.execute('select count(id) as Total from db_home.home_reclamacion;')
+        cursor4.execute('select count(id) as Total from home_reclamacion;')
 
         persons4 = cursor4.fetchall() 
 
@@ -75,7 +75,7 @@ def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/i
 
 
         cursor5 = connection.cursor()
-        cursor5.execute('select count(id) as Total from db_home.home_evaluacion_proveedores;')
+        cursor5.execute('select count(id) as Total from home_evaluacion_proveedores;')
                         
         persons5 = cursor5.fetchall() 
 
@@ -91,7 +91,7 @@ def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/i
 
 
         cursor6 = connection.cursor()
-        cursor6.execute('select count(id) as Total from db_home.home_peticion;')
+        cursor6.execute('select count(id) as Total from home_peticion;')
         
                         
         persons6 = cursor6.fetchall() 
@@ -110,7 +110,7 @@ def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/i
 
 
         cursor7 = connection.cursor()
-        cursor7.execute('select count(id) as Total from db_home.home_problema;')
+        cursor7.execute('select count(id) as Total from home_problema;')
         
         persons7 = cursor7.fetchall() 
 
@@ -126,7 +126,7 @@ def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/i
 
 
         cursor8 = connection.cursor()
-        cursor8.execute('select count(id) as Total from db_home.home_general_configuracion;')
+        cursor8.execute('select count(id) as Total from home_general_configuracion;')
                         
         persons8 = cursor8.fetchall() 
 
@@ -143,7 +143,7 @@ def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/i
 
 
         cursor9 = connection.cursor()
-        cursor9.execute('select count(id) as Total from db_home.home_solicitud_cambio;')
+        cursor9.execute('select count(id) as Total from home_solicitud_cambio;')
         
         persons9 = cursor9.fetchall() 
 
@@ -163,7 +163,7 @@ def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/i
 
 
         cursor10 = connection.cursor()
-        cursor10.execute('SELECT year(fecha_encuesta) as ano FROM db_home.home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
+        cursor10.execute('SELECT year(fecha_encuesta) as ano FROM home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
                         
         persons10 = cursor10.fetchall() 
 
@@ -179,7 +179,7 @@ def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/i
 
 
         cursor11 = connection.cursor()
-        cursor11.execute('SELECT COUNT(id) as total FROM db_home.home_encuestado where proceso_id=2  group BY year(fecha_encuesta);')
+        cursor11.execute('SELECT COUNT(id) as total FROM home_encuestado where proceso_id=2  group BY year(fecha_encuesta);')
         
         persons11 = cursor11.fetchall() 
 
@@ -198,7 +198,7 @@ def verResumenGeneral(request, template_name='/home/yusvi/sitio/home/templates/i
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('SELECT year(fecha_encuesta) as ano, COUNT(id) as total, if(COUNT(id)>2,"Aprobado","No aprobado") as objetivo FROM db_home.home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
+        cursor12.execute('SELECT year(fecha_encuesta) as ano, COUNT(id) as total, if(COUNT(id)>2,"Aprobado","No aprobado") as objetivo FROM home_encuestado where proceso_id=2 group by year(fecha_encuesta);')
         
         persons12 = cursor12.fetchall() 
 
