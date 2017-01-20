@@ -93,10 +93,13 @@ WSGI_APPLICATION = 'sitio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'yusvi$db_home',
-        'USER': 'yusvi',
+        #'NAME': 'yusvi$db_home',
+         'NAME': 'sistemacontrolpr$default',
+        #'USER': 'yusvi',
+         'USER': 'sistemacontrolpr',
         'PASSWORD': 'grafiti12',
-        'HOST': 'yusvi.mysql.pythonanywhere-services.com',
+        #'HOST': 'yusvi.mysql.pythonanywhere-services.com',
+         'HOST': 'sistemacontrolprocesos.mysql.pythonanywhere-services.com',
     }
 }
 
