@@ -638,7 +638,7 @@ def verResumenResolucion(request, template_name='Procesos/Informes/index3.html')
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('SELECT monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano, if(DATEDIFF(l.fecha_solucion, c.fecha_cierre)>0, "Cumplido", "No cumplido") as objetivo, count(DATEDIFF(l.fecha_solucion, c.fecha_cierre)) as total from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a  where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre), objetivo')
+        cursor12.execute('SELECT monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano, if(DATEDIFF(l.fecha_solucion, c.fecha_cierre)>=0, "Cumplido", "No cumplido") as objetivo, count(DATEDIFF(l.fecha_solucion, c.fecha_cierre)) as total from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a  where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre), objetivo')
         
         persons12 = cursor12.fetchall() 
 
@@ -801,7 +801,7 @@ def verResumenResolucion2(request, template_name='Procesos/Informes/index33.html
 
 
         cursor12 = connection.cursor()
-        cursor12.execute('SELECT monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano, if(DATEDIFF(l.fecha_solucion, c.fecha_cierre)>0, "Cumplido", "No cumplido") as objetivo, count(DATEDIFF(l.fecha_solucion, c.fecha_cierre)) as total from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a  where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre), objetivo')
+        cursor12.execute('SELECT monthname(c.fecha_cierre) as mes, year(c.fecha_cierre) as ano, if(DATEDIFF(l.fecha_solucion, c.fecha_cierre)>=0, "Cumplido", "No cumplido") as objetivo, count(DATEDIFF(l.fecha_solucion, c.fecha_cierre)) as total from home_acuerdo_sla l, home_cierre_peticion c, home_peticion a  where l.peticion_id = a.id and c.peticion_id = a.id group by month(c.fecha_cierre), year(c.fecha_cierre), objetivo')
         
         persons12 = cursor12.fetchall() 
 
