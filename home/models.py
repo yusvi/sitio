@@ -777,7 +777,7 @@ class Producto(models.Model):
     descripcion_producto = models.CharField(max_length=200, null=True, blank=True)
     
     def __unicode__(self):
-        return '%s %s' % (self.marca, self.modelo)
+        return '%s' % (self.descripcion_producto)
 
 class Peticion(models.Model):
     CHOICES_ORIGEN = ( ('Correo', 'Correo'), ('Monitoreo', 'Monitoreo'), ('Telefono', 'Telefono'), ('Portal', 'Portal') )
