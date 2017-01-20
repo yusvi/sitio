@@ -93,8 +93,8 @@ WSGI_APPLICATION = 'sitio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sistemacontrolprocesos$default',
-        'USER': 'sistemacontrolprocesos',
+        'NAME': 'sistemacontrolpr$default',
+        'USER': 'sistemacontrolpr',
         'PASSWORD': 'grafiti12',
         'HOST': 'sistemacontrolprocesos.mysql.pythonanywhere-services.com',
     }
