@@ -94,12 +94,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         #'NAME': 'yusvi$db_home',
-         'NAME': 'sistemacontrolpr$default',
+        'NAME': 'sistemacontrolpr$default',
         #'USER': 'yusvi',
-         'USER': 'sistemacontrolpr',
+        'USER': 'sistemacontrolpr',
         'PASSWORD': 'grafiti12',
         #'HOST': 'yusvi.mysql.pythonanywhere-services.com',
-         'HOST': 'sistemacontrolprocesos.mysql.pythonanywhere-services.com',
+        'HOST': 'sistemacontrolprocesos.mysql.pythonanywhere-services.com',
     }
 }
 
