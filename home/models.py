@@ -602,7 +602,7 @@ class Reunion(models.Model):
     fecha_reunion = models.DateField()
     
     def __unicode__(self):
-        return 'Reunion %s' % (self.id)
+        return '%s %s' % (self.solicitud, self.fecha_reunion)
 
 class Asistencia_Reunion(models.Model):
     solicitud = models.ForeignKey(Tipo_Solicitud, null=False)
