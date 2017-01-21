@@ -981,7 +981,7 @@ def verResumenControl(request, template_name='Procesos/Informes/index4.html'):
 
 
         cursor13 = connection.cursor()
-        cursor13.execute('SELECT year(fecha) as ano, monthname(fecha) as mes, COUNT(id) as total, if(COUNT(id)>=5,"Cumplido","No cumplido") as objetivo FROM home_solicitud_cambio group by year(fecha), month(fecha);')
+        cursor13.execute('SELECT year(fecha) as ano, monthname(fecha) as mes, COUNT(id) as total, if(COUNT(id)>=3,"Cumplido","No cumplido") as objetivo FROM home_solicitud_cambio group by year(fecha), month(fecha);')
         
         persons13 = cursor13.fetchall() 
 
@@ -1144,7 +1144,7 @@ def verResumenControl2(request, template_name='Procesos/Informes/index44.html'):
 
 
         cursor13 = connection.cursor()
-        cursor13.execute('SELECT year(fecha) as ano, monthname(fecha) as mes, COUNT(id) as total, if(COUNT(id)>=5,"Cumplido","No cumplido") as objetivo FROM home_solicitud_cambio group by year(fecha), month(fecha);')
+        cursor13.execute('SELECT year(fecha) as ano, monthname(fecha) as mes, COUNT(id) as total, if(COUNT(id)>=3,"Cumplido","No cumplido") as objetivo FROM home_solicitud_cambio group by year(fecha), month(fecha);')
         
         persons13 = cursor13.fetchall() 
 
