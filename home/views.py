@@ -2417,7 +2417,7 @@ def eliminarCambio(request, id, template_name='Procesos/Cambios/eliminarCambio.h
             return redirect('mostrar_cambio')
 
     if 'save' in request.POST:
-            peticion.delete()
+            cambio.delete()
             return redirect('mostrar_cambio')
 
 
